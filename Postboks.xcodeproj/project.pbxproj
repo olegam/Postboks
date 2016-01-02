@@ -1,0 +1,810 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C3589C8B70547499696EB34 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9C59AAB4C2472CB05AD0A8 /* libPods.a */; };
+		85C5A0D82F161D3CA4DF28B6 /* BasePreferencesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A801A170B2163718E33E /* BasePreferencesView.m */; };
+		85C5A1A02C0FB43045F1CD56 /* CenteredTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A72121EF88AF618C02E0 /* CenteredTextField.m */; };
+		85C5A1A1D2F962D92555B158 /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A9510A71773BD1CEB5FC /* StatusBarController.m */; };
+		85C5A1F49245BBF4C27398E8 /* Postboks-DeveloperID.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A9CFABB66DEF7F0572EE /* Postboks-DeveloperID.entitlements */; };
+		85C5A21DBC32CD88879A0168 /* NSTableView+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AF099EEC058972882B76 /* NSTableView+RACAdditions.m */; };
+		85C5A2D9B9DEBCCC3AA620CD /* menubar_icon_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A08417AC78C1CB68C3F8 /* menubar_icon_selected.png */; };
+		85C5A30BB18379CDBD14DC60 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AE56A55AF1E51753253A /* SettingsManager.m */; };
+		85C5A36FC9196DDEF0958030 /* EboksFolderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AA5D9940D234FA1C5209 /* EboksFolderInfo.m */; };
+		85C5A47A351BFAC02AE7AA1B /* EboksSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A98F6919EF3F5FA4D0C3 /* EboksSession.m */; };
+		85C5A47A92FA32548B86D880 /* account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5AC947FDA6F7EAA7532D4 /* account_icon@2x.png */; };
+		85C5A50D331DE6001B907E0A /* menubar_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5ADFDAB58E98F6BA9F1BE /* menubar_icon.png */; };
+		85C5A54691FCD890DA7052EC /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A233B6A2C34ECD717C75 /* PreferencesWindowController.m */; };
+		85C5A54C6948D70C266A9EDA /* FlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A80D91D1C119D794A78E /* FlatButton.m */; };
+		85C5A5AAE84D1BFEB3D788FA /* StyledWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A1180FBC36C3DC0B31B2 /* StyledWindow.m */; };
+		85C5A60FF75EA945DFF5877D /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AABB237208B8185CFF80 /* RegExCategories.m */; };
+		85C5A6404BBF8EB721D95CDA /* SidebarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A18B76F39C2477B3FB09 /* SidebarView.m */; };
+		85C5A641C4C008BF3309477C /* ModernGeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A613FBC98170295611FA /* ModernGeneralPreferencesViewController.m */; };
+		85C5A66501A0DBD43CE0A2EE /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5ABAC969BFECEF11FADA6 /* APIClient.m */; };
+		85C5A6D326C707C351839412 /* selected_tab_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5AB75C61CA0AC2DF640FF /* selected_tab_background@2x.png */; };
+		85C5A7AEDEEAC95C233E055F /* MessageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A1FC0A0F28F01BF4D9FD /* MessageInfo.m */; };
+		85C5A8AF815CEA3A281365BA /* ModernAddAccountWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A4E6C86617105A8B1D53 /* ModernAddAccountWindowController.m */; };
+		85C5A8F86F8F5A4C169D54BC /* NSString+EboksAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A51E7D4DB4E0D6F1B120 /* NSString+EboksAdditions.m */; };
+		85C5A913F9A46524E6C6993E /* DocumentDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A800BECFC659216572FE /* DocumentDownloader.m */; };
+		85C5AAA7933E191D9C6A5C95 /* add_account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A62B34985B5E34E7C19F /* add_account_icon@2x.png */; };
+		85C5AC0C47CFC976A108CFA6 /* BackgroundColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AD39532803AE05D21DB6 /* BackgroundColorView.m */; };
+		85C5AC53B9E9821674E00676 /* NSButton+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AA40656F83810D33935D /* NSButton+RACAdditions.m */; };
+		85C5AC774BEB44B26D8B3574 /* menubar_icon_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A3369B153C94663E2A9C /* menubar_icon_selected@2x.png */; };
+		85C5ACBB5CD30AF0A60A53BB /* selected_tab_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A64093CA6E002F05C9DD /* selected_tab_background.png */; };
+		85C5ACCE152804675674B617 /* EboksAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A9C8BCA6289F51014E42 /* EboksAccount.m */; };
+		85C5ACF8AEF14EE175A3E473 /* general_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A92B98672F2A3AA94553 /* general_icon@2x.png */; };
+		85C5AD5ADAD1071C23407235 /* remove_account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A30B8B689C331139E730 /* remove_account_icon@2x.png */; };
+		85C5AD940134D8DED8A76E89 /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AA37ED8792AD9862A2E1 /* TabBarView.m */; };
+		85C5ADC8C07DAE400E36FEA0 /* CellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A8451B11720681A9AE29 /* CellContainerView.m */; };
+		85C5AE0CE125A8E1E950BDBA /* accounts_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5AA9FA69658C77FD464EF /* accounts_icon@2x.png */; };
+		85C5AE1D515F1858360BFE01 /* SyncScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A608692EEF6761792EC7 /* SyncScheduler.m */; };
+		85C5AE531D8D006D35E27F14 /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A6BEFD78BC40680F8421 /* TabButton.m */; };
+		85C5AE65EF89FE62A2B4DB5B /* ModernAccountPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A86D43C8CB918A2BD9C2 /* ModernAccountPreferencesViewController.m */; };
+		85C5AEB3B52E84F61CB30412 /* menubar_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5AA6F9C4388EF9A8E461E /* menubar_icon@2x.png */; };
+		85C5AFFE708EE1F5DE4F06F4 /* NSComboBox+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AD584B29E3833502794F /* NSComboBox+RACAdditions.m */; };
+		9B6F7E7C19A8DA0D00409378 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6F7E7B19A8DA0D00409378 /* ServiceManagement.framework */; };
+		9B70BF1F19CB9496005556C3 /* PostboksHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B70BF0A19CB11A2005556C3 /* PostboksHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9B70BF2219CB9771005556C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B70BF2419CB9771005556C3 /* Localizable.strings */; };
+		9B81F43919993EC4006F4846 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B81F43819993EC4006F4846 /* main.m */; };
+		9B81F43C19993EC4006F4846 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B81F43B19993EC4006F4846 /* AppDelegate.m */; };
+		9B81F43E19993EC4006F4846 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B81F43D19993EC4006F4846 /* Images.xcassets */; };
+		9B81F44119993EC4006F4846 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B81F43F19993EC4006F4846 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B70BF0919CB11A2005556C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B6F7E7219A8D98C00409378 /* PostboksHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9B6F7E3B19A8D8C000409378;
+			remoteInfo = PostboksHelper;
+		};
+		9B70BF1A19CB9426005556C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B6F7E7219A8D98C00409378 /* PostboksHelper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B6F7E3A19A8D8C000409378;
+			remoteInfo = PostboksHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9B6F7E7819A8D9B200409378 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				9B70BF1F19CB9496005556C3 /* PostboksHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		56E9FCBA501FBB28A5382870 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		57879870E89A80B44854C0D2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		85C5A00FED6B14BBF056CD7F /* MessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInfo.h; sourceTree = "<group>"; };
+		85C5A0247E896808AFD92294 /* NSString+EboksAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EboksAdditions.h"; sourceTree = "<group>"; };
+		85C5A03151FC9AF0D1B6FFAF /* StyledWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledWindow.h; sourceTree = "<group>"; };
+		85C5A04C1B8AED33F44C1BB1 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
+		85C5A08417AC78C1CB68C3F8 /* menubar_icon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_icon_selected.png; sourceTree = "<group>"; };
+		85C5A0959F892379B2001182 /* NSComboBox+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSComboBox+RACAdditions.h"; sourceTree = "<group>"; };
+		85C5A109B9464C65AA7AA965 /* EboksAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EboksAccount.h; sourceTree = "<group>"; };
+		85C5A1180FBC36C3DC0B31B2 /* StyledWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledWindow.m; sourceTree = "<group>"; };
+		85C5A175F206F0E9A6B953B6 /* EboksSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EboksSession.h; sourceTree = "<group>"; };
+		85C5A18B76F39C2477B3FB09 /* SidebarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarView.m; sourceTree = "<group>"; };
+		85C5A1FC0A0F28F01BF4D9FD /* MessageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInfo.m; sourceTree = "<group>"; };
+		85C5A233B6A2C34ECD717C75 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		85C5A268B2D563A8E22F58EB /* FlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatButton.h; sourceTree = "<group>"; };
+		85C5A30B8B689C331139E730 /* remove_account_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove_account_icon@2x.png"; sourceTree = "<group>"; };
+		85C5A32761E9BB657CBEF938 /* EboksFolderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EboksFolderInfo.h; sourceTree = "<group>"; };
+		85C5A32BF4F030AA02DFB112 /* NSButton+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+RACAdditions.h"; sourceTree = "<group>"; };
+		85C5A3369B153C94663E2A9C /* menubar_icon_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar_icon_selected@2x.png"; sourceTree = "<group>"; };
+		85C5A3B3C311D66D3846CB9C /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
+		85C5A46C7419AF54165D4E3A /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		85C5A4E6C86617105A8B1D53 /* ModernAddAccountWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModernAddAccountWindowController.m; sourceTree = "<group>"; };
+		85C5A4E7F1B175A32BCCC255 /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
+		85C5A51E7D4DB4E0D6F1B120 /* NSString+EboksAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EboksAdditions.m"; sourceTree = "<group>"; };
+		85C5A608692EEF6761792EC7 /* SyncScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncScheduler.m; sourceTree = "<group>"; };
+		85C5A613FBC98170295611FA /* ModernGeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModernGeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		85C5A61ABAD82571EA9AF1CA /* CenteredTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextField.h; sourceTree = "<group>"; };
+		85C5A62B34985B5E34E7C19F /* add_account_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_account_icon@2x.png"; sourceTree = "<group>"; };
+		85C5A64093CA6E002F05C9DD /* selected_tab_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected_tab_background.png; sourceTree = "<group>"; };
+		85C5A6BEFD78BC40680F8421 /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
+		85C5A6CA2ADB1DAB7BC1CAC6 /* BackgroundColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundColorView.h; sourceTree = "<group>"; };
+		85C5A6E238B7C6E0340FE74C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		85C5A72121EF88AF618C02E0 /* CenteredTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextField.m; sourceTree = "<group>"; };
+		85C5A800BECFC659216572FE /* DocumentDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentDownloader.m; sourceTree = "<group>"; };
+		85C5A801A170B2163718E33E /* BasePreferencesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePreferencesView.m; sourceTree = "<group>"; };
+		85C5A80D91D1C119D794A78E /* FlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatButton.m; sourceTree = "<group>"; };
+		85C5A82920C38385E5F9724F /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		85C5A83C2B78BFBCC0B39721 /* NSTableView+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTableView+RACAdditions.h"; sourceTree = "<group>"; };
+		85C5A8451B11720681A9AE29 /* CellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellContainerView.m; sourceTree = "<group>"; };
+		85C5A86D43C8CB918A2BD9C2 /* ModernAccountPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModernAccountPreferencesViewController.m; sourceTree = "<group>"; };
+		85C5A88576D3F17CE0750634 /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
+		85C5A8EE23E81794092218DC /* ModernAccountPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModernAccountPreferencesViewController.h; sourceTree = "<group>"; };
+		85C5A92B98672F2A3AA94553 /* general_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "general_icon@2x.png"; sourceTree = "<group>"; };
+		85C5A9510A71773BD1CEB5FC /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
+		85C5A984EFBAD3C901EA6D2B /* CellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellContainerView.h; sourceTree = "<group>"; };
+		85C5A98F6919EF3F5FA4D0C3 /* EboksSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EboksSession.m; sourceTree = "<group>"; };
+		85C5A9C8BCA6289F51014E42 /* EboksAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EboksAccount.m; sourceTree = "<group>"; };
+		85C5A9CFABB66DEF7F0572EE /* Postboks-DeveloperID.entitlements */ = {isa = PBXFileReference; lastKnownFileType = file.entitlements; path = "Postboks-DeveloperID.entitlements"; sourceTree = "<group>"; };
+		85C5AA37ED8792AD9862A2E1 /* TabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarView.m; sourceTree = "<group>"; };
+		85C5AA40656F83810D33935D /* NSButton+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+RACAdditions.m"; sourceTree = "<group>"; };
+		85C5AA5D9940D234FA1C5209 /* EboksFolderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EboksFolderInfo.m; sourceTree = "<group>"; };
+		85C5AA6F9C4388EF9A8E461E /* menubar_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar_icon@2x.png"; sourceTree = "<group>"; };
+		85C5AA9FA69658C77FD464EF /* accounts_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "accounts_icon@2x.png"; sourceTree = "<group>"; };
+		85C5AABB237208B8185CFF80 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
+		85C5AAEF206D501ABA87989C /* DocumentDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentDownloader.h; sourceTree = "<group>"; };
+		85C5AB1B6240CEE14EEFAC22 /* Postboks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = file.entitlements; path = Postboks.entitlements; sourceTree = "<group>"; };
+		85C5AB75C61CA0AC2DF640FF /* selected_tab_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_tab_background@2x.png"; sourceTree = "<group>"; };
+		85C5ABAC969BFECEF11FADA6 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
+		85C5ABF374CBCFC67EC52599 /* TabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarView.h; sourceTree = "<group>"; };
+		85C5AC4AA569D4B738B22E11 /* SidebarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarView.h; sourceTree = "<group>"; };
+		85C5AC5992761FF3E0138C6F /* ModernAddAccountWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModernAddAccountWindowController.h; sourceTree = "<group>"; };
+		85C5AC947FDA6F7EAA7532D4 /* account_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_icon@2x.png"; sourceTree = "<group>"; };
+		85C5AD39532803AE05D21DB6 /* BackgroundColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundColorView.m; sourceTree = "<group>"; };
+		85C5AD4B9DA81D27B059CFF4 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		85C5AD584B29E3833502794F /* NSComboBox+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSComboBox+RACAdditions.m"; sourceTree = "<group>"; };
+		85C5ADFDAB58E98F6BA9F1BE /* menubar_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_icon.png; sourceTree = "<group>"; };
+		85C5AE56A55AF1E51753253A /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
+		85C5AEFFB7D0576F7A6D458E /* BasePreferencesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePreferencesView.h; sourceTree = "<group>"; };
+		85C5AF099EEC058972882B76 /* NSTableView+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTableView+RACAdditions.m"; sourceTree = "<group>"; };
+		85C5AF8EE5E5A77B3639B0F4 /* SyncScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncScheduler.h; sourceTree = "<group>"; };
+		85C5AFC3DC4ACBB8599DA2D7 /* ModernGeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModernGeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		9B6F7E7219A8D98C00409378 /* PostboksHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PostboksHelper.xcodeproj; path = helper/PostboksHelper.xcodeproj; sourceTree = "<group>"; };
+		9B6F7E7B19A8DA0D00409378 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		9B70BF2519CB97CB005556C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B70BF2619CB97CC005556C3 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B70BF2719CB992C005556C3 /* da */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = da; path = da.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9B70BF2819CB9935005556C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9B81F43319993EC4006F4846 /* Postboks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Postboks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B81F43719993EC4006F4846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B81F43819993EC4006F4846 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B81F43A19993EC4006F4846 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9B81F43B19993EC4006F4846 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9B81F43D19993EC4006F4846 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CA8658EFD47CE9C6299AFAEA /* Pods.developerid.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.developerid.xcconfig; path = "Pods/Target Support Files/Pods/Pods.developerid.xcconfig"; sourceTree = "<group>"; };
+		CD9C59AAB4C2472CB05AD0A8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B81F43019993EC4006F4846 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B6F7E7C19A8DA0D00409378 /* ServiceManagement.framework in Frameworks */,
+				3C3589C8B70547499696EB34 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		85C5A0C2960ECDCE4A8F6B35 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				85C5A1FC0A0F28F01BF4D9FD /* MessageInfo.m */,
+				85C5A00FED6B14BBF056CD7F /* MessageInfo.h */,
+				85C5A175F206F0E9A6B953B6 /* EboksSession.h */,
+				85C5A109B9464C65AA7AA965 /* EboksAccount.h */,
+				85C5A9C8BCA6289F51014E42 /* EboksAccount.m */,
+				85C5A98F6919EF3F5FA4D0C3 /* EboksSession.m */,
+				85C5AA5D9940D234FA1C5209 /* EboksFolderInfo.m */,
+				85C5A32761E9BB657CBEF938 /* EboksFolderInfo.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		85C5A3F043D09A66D4B08D1B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				85C5ABAC969BFECEF11FADA6 /* APIClient.m */,
+				85C5A46C7419AF54165D4E3A /* APIClient.h */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		85C5A48DBFB6C3B6B5AAB1BD /* External */ = {
+			isa = PBXGroup;
+			children = (
+				85C5A7F079791C2116E4ECBC /* RegExCategories */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		85C5A6BC48B2BACF5AF0EEF6 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				85C5A51E7D4DB4E0D6F1B120 /* NSString+EboksAdditions.m */,
+				85C5A0247E896808AFD92294 /* NSString+EboksAdditions.h */,
+				85C5A32BF4F030AA02DFB112 /* NSButton+RACAdditions.h */,
+				85C5AA40656F83810D33935D /* NSButton+RACAdditions.m */,
+				85C5A0959F892379B2001182 /* NSComboBox+RACAdditions.h */,
+				85C5AD584B29E3833502794F /* NSComboBox+RACAdditions.m */,
+				85C5A83C2B78BFBCC0B39721 /* NSTableView+RACAdditions.h */,
+				85C5AF099EEC058972882B76 /* NSTableView+RACAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		85C5A7F079791C2116E4ECBC /* RegExCategories */ = {
+			isa = PBXGroup;
+			children = (
+				85C5A88576D3F17CE0750634 /* RegExCategories.h */,
+				85C5AABB237208B8185CFF80 /* RegExCategories.m */,
+				85C5A6E238B7C6E0340FE74C /* LICENSE.txt */,
+			);
+			path = RegExCategories;
+			sourceTree = "<group>";
+		};
+		85C5ADAD86FF184B2EE977EF /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				85C5A9510A71773BD1CEB5FC /* StatusBarController.m */,
+				85C5A3B3C311D66D3846CB9C /* StatusBarController.h */,
+				85C5A72121EF88AF618C02E0 /* CenteredTextField.m */,
+				85C5A86D43C8CB918A2BD9C2 /* ModernAccountPreferencesViewController.m */,
+				85C5AEFFB7D0576F7A6D458E /* BasePreferencesView.h */,
+				85C5A03151FC9AF0D1B6FFAF /* StyledWindow.h */,
+				85C5A82920C38385E5F9724F /* PreferencesWindowController.h */,
+				85C5A984EFBAD3C901EA6D2B /* CellContainerView.h */,
+				85C5A8EE23E81794092218DC /* ModernAccountPreferencesViewController.h */,
+				85C5A4E6C86617105A8B1D53 /* ModernAddAccountWindowController.m */,
+				85C5A8451B11720681A9AE29 /* CellContainerView.m */,
+				85C5A6CA2ADB1DAB7BC1CAC6 /* BackgroundColorView.h */,
+				85C5AC4AA569D4B738B22E11 /* SidebarView.h */,
+				85C5A80D91D1C119D794A78E /* FlatButton.m */,
+				85C5A6BEFD78BC40680F8421 /* TabButton.m */,
+				85C5A801A170B2163718E33E /* BasePreferencesView.m */,
+				85C5A18B76F39C2477B3FB09 /* SidebarView.m */,
+				85C5A268B2D563A8E22F58EB /* FlatButton.h */,
+				85C5AD39532803AE05D21DB6 /* BackgroundColorView.m */,
+				85C5A613FBC98170295611FA /* ModernGeneralPreferencesViewController.m */,
+				85C5AC5992761FF3E0138C6F /* ModernAddAccountWindowController.h */,
+				85C5A4E7F1B175A32BCCC255 /* TabButton.h */,
+				85C5AA37ED8792AD9862A2E1 /* TabBarView.m */,
+				85C5A61ABAD82571EA9AF1CA /* CenteredTextField.h */,
+				85C5A1180FBC36C3DC0B31B2 /* StyledWindow.m */,
+				85C5A233B6A2C34ECD717C75 /* PreferencesWindowController.m */,
+				85C5AFC3DC4ACBB8599DA2D7 /* ModernGeneralPreferencesViewController.h */,
+				85C5ABF374CBCFC67EC52599 /* TabBarView.h */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		85C5AE98BC57C1099197712D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				85C5A3369B153C94663E2A9C /* menubar_icon_selected@2x.png */,
+				85C5AA6F9C4388EF9A8E461E /* menubar_icon@2x.png */,
+				85C5A08417AC78C1CB68C3F8 /* menubar_icon_selected.png */,
+				85C5ADFDAB58E98F6BA9F1BE /* menubar_icon.png */,
+				85C5AA9FA69658C77FD464EF /* accounts_icon@2x.png */,
+				85C5A92B98672F2A3AA94553 /* general_icon@2x.png */,
+				85C5AB75C61CA0AC2DF640FF /* selected_tab_background@2x.png */,
+				85C5A64093CA6E002F05C9DD /* selected_tab_background.png */,
+				85C5A30B8B689C331139E730 /* remove_account_icon@2x.png */,
+				85C5AC947FDA6F7EAA7532D4 /* account_icon@2x.png */,
+				85C5A62B34985B5E34E7C19F /* add_account_icon@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		9B70BF0619CB11A2005556C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B70BF0A19CB11A2005556C3 /* PostboksHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B81F42A19993EC4006F4846 = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E7219A8D98C00409378 /* PostboksHelper.xcodeproj */,
+				9B81F43519993EC4006F4846 /* Postboks */,
+				9B81F43419993EC4006F4846 /* Products */,
+				AD0432BAB5B7458E851D12DF /* Frameworks */,
+				BC3F781771BA654F60F001CA /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		9B81F43419993EC4006F4846 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B81F43319993EC4006F4846 /* Postboks.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B81F43519993EC4006F4846 /* Postboks */ = {
+			isa = PBXGroup;
+			children = (
+				9B81F43A19993EC4006F4846 /* AppDelegate.h */,
+				9B81F43B19993EC4006F4846 /* AppDelegate.m */,
+				9B81F43D19993EC4006F4846 /* Images.xcassets */,
+				9B81F43F19993EC4006F4846 /* MainMenu.xib */,
+				9B81F43619993EC4006F4846 /* Supporting Files */,
+				85C5A48DBFB6C3B6B5AAB1BD /* External */,
+				85C5A3F043D09A66D4B08D1B /* API */,
+				85C5A6BC48B2BACF5AF0EEF6 /* Additions */,
+				85C5A0C2960ECDCE4A8F6B35 /* Models */,
+				9B70BF2419CB9771005556C3 /* Localizable.strings */,
+				85C5AE56A55AF1E51753253A /* SettingsManager.m */,
+				85C5A04C1B8AED33F44C1BB1 /* SettingsManager.h */,
+				85C5AAEF206D501ABA87989C /* DocumentDownloader.h */,
+				85C5A800BECFC659216572FE /* DocumentDownloader.m */,
+				85C5A608692EEF6761792EC7 /* SyncScheduler.m */,
+				85C5AF8EE5E5A77B3639B0F4 /* SyncScheduler.h */,
+				85C5ADAD86FF184B2EE977EF /* User Interface */,
+				85C5AE98BC57C1099197712D /* Images */,
+				85C5A9CFABB66DEF7F0572EE /* Postboks-DeveloperID.entitlements */,
+			);
+			path = Postboks;
+			sourceTree = "<group>";
+		};
+		9B81F43619993EC4006F4846 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B81F43719993EC4006F4846 /* Info.plist */,
+				9B81F43819993EC4006F4846 /* main.m */,
+				85C5AD4B9DA81D27B059CFF4 /* Prefix.pch */,
+				85C5AB1B6240CEE14EEFAC22 /* Postboks.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD0432BAB5B7458E851D12DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E7B19A8DA0D00409378 /* ServiceManagement.framework */,
+				CD9C59AAB4C2472CB05AD0A8 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC3F781771BA654F60F001CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56E9FCBA501FBB28A5382870 /* Pods.debug.xcconfig */,
+				57879870E89A80B44854C0D2 /* Pods.release.xcconfig */,
+				CA8658EFD47CE9C6299AFAEA /* Pods.developerid.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B81F43219993EC4006F4846 /* Postboks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B81F45019993EC4006F4846 /* Build configuration list for PBXNativeTarget "Postboks" */;
+			buildPhases = (
+				5854B0647AE1467DACB03CF9 /* Check Pods Manifest.lock */,
+				9B81F42F19993EC4006F4846 /* Sources */,
+				9B81F43019993EC4006F4846 /* Frameworks */,
+				9B81F43119993EC4006F4846 /* Resources */,
+				681258DCFA164792BBCF287F /* Copy Pods Resources */,
+				9B6F7E7819A8D9B200409378 /* CopyFiles */,
+				71F8F1608B1A8B89D4547B40 /* Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B70BF1B19CB9426005556C3 /* PBXTargetDependency */,
+			);
+			name = Postboks;
+			productName = EboksSync;
+			productReference = 9B81F43319993EC4006F4846 /* Postboks.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B81F42B19993EC4006F4846 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Ole Gammelgaard";
+				TargetAttributes = {
+					9B81F43219993EC4006F4846 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 9KEZK5CK2V;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 9B81F42E19993EC4006F4846 /* Build configuration list for PBXProject "Postboks" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				da,
+			);
+			mainGroup = 9B81F42A19993EC4006F4846;
+			productRefGroup = 9B81F43419993EC4006F4846 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9B70BF0619CB11A2005556C3 /* Products */;
+					ProjectRef = 9B6F7E7219A8D98C00409378 /* PostboksHelper.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9B81F43219993EC4006F4846 /* Postboks */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9B70BF0A19CB11A2005556C3 /* PostboksHelper.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = PostboksHelper.app;
+			remoteRef = 9B70BF0919CB11A2005556C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B81F43119993EC4006F4846 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B81F43E19993EC4006F4846 /* Images.xcassets in Resources */,
+				9B81F44119993EC4006F4846 /* MainMenu.xib in Resources */,
+				9B70BF2219CB9771005556C3 /* Localizable.strings in Resources */,
+				85C5AC774BEB44B26D8B3574 /* menubar_icon_selected@2x.png in Resources */,
+				85C5AEB3B52E84F61CB30412 /* menubar_icon@2x.png in Resources */,
+				85C5A2D9B9DEBCCC3AA620CD /* menubar_icon_selected.png in Resources */,
+				85C5A50D331DE6001B907E0A /* menubar_icon.png in Resources */,
+				85C5AE0CE125A8E1E950BDBA /* accounts_icon@2x.png in Resources */,
+				85C5ACF8AEF14EE175A3E473 /* general_icon@2x.png in Resources */,
+				85C5A6D326C707C351839412 /* selected_tab_background@2x.png in Resources */,
+				85C5ACBB5CD30AF0A60A53BB /* selected_tab_background.png in Resources */,
+				85C5AD5ADAD1071C23407235 /* remove_account_icon@2x.png in Resources */,
+				85C5A47A92FA32548B86D880 /* account_icon@2x.png in Resources */,
+				85C5AAA7933E191D9C6A5C95 /* add_account_icon@2x.png in Resources */,
+				85C5A1F49245BBF4C27398E8 /* Postboks-DeveloperID.entitlements in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5854B0647AE1467DACB03CF9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		681258DCFA164792BBCF287F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71F8F1608B1A8B89D4547B40 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B81F42F19993EC4006F4846 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B81F43C19993EC4006F4846 /* AppDelegate.m in Sources */,
+				9B81F43919993EC4006F4846 /* main.m in Sources */,
+				85C5A60FF75EA945DFF5877D /* RegExCategories.m in Sources */,
+				85C5A66501A0DBD43CE0A2EE /* APIClient.m in Sources */,
+				85C5A8F86F8F5A4C169D54BC /* NSString+EboksAdditions.m in Sources */,
+				85C5A7AEDEEAC95C233E055F /* MessageInfo.m in Sources */,
+				85C5ACCE152804675674B617 /* EboksAccount.m in Sources */,
+				85C5A47A351BFAC02AE7AA1B /* EboksSession.m in Sources */,
+				85C5A30BB18379CDBD14DC60 /* SettingsManager.m in Sources */,
+				85C5A913F9A46524E6C6993E /* DocumentDownloader.m in Sources */,
+				85C5AE1D515F1858360BFE01 /* SyncScheduler.m in Sources */,
+				85C5A1A1D2F962D92555B158 /* StatusBarController.m in Sources */,
+				85C5AC53B9E9821674E00676 /* NSButton+RACAdditions.m in Sources */,
+				85C5AFFE708EE1F5DE4F06F4 /* NSComboBox+RACAdditions.m in Sources */,
+				85C5A21DBC32CD88879A0168 /* NSTableView+RACAdditions.m in Sources */,
+				85C5A36FC9196DDEF0958030 /* EboksFolderInfo.m in Sources */,
+				85C5A1A02C0FB43045F1CD56 /* CenteredTextField.m in Sources */,
+				85C5AE65EF89FE62A2B4DB5B /* ModernAccountPreferencesViewController.m in Sources */,
+				85C5A8AF815CEA3A281365BA /* ModernAddAccountWindowController.m in Sources */,
+				85C5ADC8C07DAE400E36FEA0 /* CellContainerView.m in Sources */,
+				85C5A54C6948D70C266A9EDA /* FlatButton.m in Sources */,
+				85C5AE531D8D006D35E27F14 /* TabButton.m in Sources */,
+				85C5A0D82F161D3CA4DF28B6 /* BasePreferencesView.m in Sources */,
+				85C5A6404BBF8EB721D95CDA /* SidebarView.m in Sources */,
+				85C5AC0C47CFC976A108CFA6 /* BackgroundColorView.m in Sources */,
+				85C5A641C4C008BF3309477C /* ModernGeneralPreferencesViewController.m in Sources */,
+				85C5AD940134D8DED8A76E89 /* TabBarView.m in Sources */,
+				85C5A5AAE84D1BFEB3D788FA /* StyledWindow.m in Sources */,
+				85C5A54691FCD890DA7052EC /* PreferencesWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9B70BF1B19CB9426005556C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PostboksHelper;
+			targetProxy = 9B70BF1A19CB9426005556C3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9B70BF2419CB9771005556C3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B70BF2519CB97CB005556C3 /* en */,
+				9B70BF2619CB97CC005556C3 /* da */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9B81F43F19993EC4006F4846 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B70BF2719CB992C005556C3 /* da */,
+				9B70BF2819CB9935005556C3 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9B38652E1A2D178700FE355B /* DeveloperID */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 13;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = DeveloperID;
+		};
+		9B38652F1A2D178700FE355B /* DeveloperID */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA8658EFD47CE9C6299AFAEA /* Pods.developerid.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 13;
+				GCC_PREFIX_HEADER = Postboks/Prefix.pch;
+				INFOPLIST_FILE = Postboks/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = Postboks;
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = DeveloperID;
+		};
+		9B81F44E19993EC4006F4846 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 13;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		9B81F44F19993EC4006F4846 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 13;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		9B81F45119993EC4006F4846 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56E9FCBA501FBB28A5382870 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Postboks/Postboks.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 13;
+				GCC_PREFIX_HEADER = Postboks/Prefix.pch;
+				INFOPLIST_FILE = Postboks/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = Postboks;
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		9B81F45219993EC4006F4846 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57879870E89A80B44854C0D2 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Postboks/Postboks.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 13;
+				GCC_PREFIX_HEADER = Postboks/Prefix.pch;
+				INFOPLIST_FILE = Postboks/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_NAME = Postboks;
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B81F42E19993EC4006F4846 /* Build configuration list for PBXProject "Postboks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B81F44E19993EC4006F4846 /* Debug */,
+				9B81F44F19993EC4006F4846 /* Release */,
+				9B38652E1A2D178700FE355B /* DeveloperID */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B81F45019993EC4006F4846 /* Build configuration list for PBXNativeTarget "Postboks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B81F45119993EC4006F4846 /* Debug */,
+				9B81F45219993EC4006F4846 /* Release */,
+				9B38652F1A2D178700FE355B /* DeveloperID */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B81F42B19993EC4006F4846 /* Project object */;
+}

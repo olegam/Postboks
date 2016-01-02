@@ -1,0 +1,40 @@
+
+
+// Statusbar
+"failed-retry-in" = "Failed. Retry in %@";
+"syncs-every" = "Syncs every %@";
+"next-sync-in" = "Next sync in %@";
+"no-internet" = "No Internet";
+"status-syncing" = "Syncing...";
+"sync-now" = "Sync now";
+"open-documents-folder" = "Open documents folder";
+"preferences-open" = "Preferences...";
+"quit" = "Quit";
+
+"preferences-title" = "Preferences";
+"eboks-help" = "Postboks needs the same credentials as the eBoks mobile app. Log in to e-boks.dk with NemID and go to the settings page to find your mobile activation code and set a password.";
+"account-header" = "Account";
+"cpr-legend" = "Social security #:";
+"password-legend" = "Password:";
+"activation-code-legend" = "Activation code:";
+"cancel" = "Cancel";
+"save" = "Save";
+"copyright-information" = "Copyright (c) 2014 Ole Gammelgaard Poulsen";
+"download-folder-legend" = "Download folder";
+"change-folder-button" = "Change";
+"version-format" = "Version %@ (%@)";
+"start-automatically" = "Start Postboks automatically";
+"beta-expired" = "Beta expired.";
+"error-title" = "An error ocurred";
+"OK" = "OK";
+"automatic-launch-activate-error" = "Could not activate automatic launch.";
+"automatic-launch-deactivate-launch" = "Could not deactivate automatic launch.";
+"general-tab" = "General";
+"accounts-tab" = "Accounts";
+"help-button" = "Help";
+"account-sidebar-title" = "Account";
+"launch-sidebar-title" = "Launch";
+"download-folder-sidebar-title" = "Download folder";
+"add-account-cell-title" = "Add account";
+"account-already-exists" = "There is already an account with id %@";
+"no-accounts" = "No accounts";

@@ -1,0 +1,383 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B6F7E3F19A8D8C000409378 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6F7E3E19A8D8C000409378 /* Cocoa.framework */; };
+		9B6F7E4B19A8D8C000409378 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F7E4A19A8D8C000409378 /* main.m */; };
+		9B6F7E5219A8D8C000409378 /* HelperAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F7E5119A8D8C000409378 /* HelperAppDelegate.m */; };
+		9B6F7E8519A8E25000409378 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B6F7E8719A8E25000409378 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9B6F7E3B19A8D8C000409378 /* PostboksHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostboksHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B6F7E3E19A8D8C000409378 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9B6F7E4119A8D8C000409378 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9B6F7E4219A8D8C000409378 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9B6F7E4319A8D8C000409378 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9B6F7E4619A8D8C000409378 /* PostboksHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PostboksHelper-Info.plist"; sourceTree = "<group>"; };
+		9B6F7E4A19A8D8C000409378 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B6F7E4C19A8D8C000409378 /* PostboksHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PostboksHelper-Prefix.pch"; sourceTree = "<group>"; };
+		9B6F7E5019A8D8C000409378 /* HelperAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelperAppDelegate.h; sourceTree = "<group>"; };
+		9B6F7E5119A8D8C000409378 /* HelperAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelperAppDelegate.m; sourceTree = "<group>"; };
+		9B6F7E5D19A8D8C000409378 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9B6F7E7F19A8E10400409378 /* PostboksHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PostboksHelper.entitlements; sourceTree = "<group>"; };
+		9B6F7E8619A8E25000409378 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9B70BF2119CB9735005556C3 /* da */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = da; path = da.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B6F7E3819A8D8C000409378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B6F7E3F19A8D8C000409378 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B6F7E3219A8D8C000409378 = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E4419A8D8C000409378 /* PostboksHelper */,
+				9B6F7E3D19A8D8C000409378 /* Frameworks */,
+				9B6F7E3C19A8D8C000409378 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9B6F7E3C19A8D8C000409378 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E3B19A8D8C000409378 /* PostboksHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B6F7E3D19A8D8C000409378 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E3E19A8D8C000409378 /* Cocoa.framework */,
+				9B6F7E5D19A8D8C000409378 /* XCTest.framework */,
+				9B6F7E4019A8D8C000409378 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B6F7E4019A8D8C000409378 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E4119A8D8C000409378 /* AppKit.framework */,
+				9B6F7E4219A8D8C000409378 /* CoreData.framework */,
+				9B6F7E4319A8D8C000409378 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9B6F7E4419A8D8C000409378 /* PostboksHelper */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E7F19A8E10400409378 /* PostboksHelper.entitlements */,
+				9B6F7E5019A8D8C000409378 /* HelperAppDelegate.h */,
+				9B6F7E5119A8D8C000409378 /* HelperAppDelegate.m */,
+				9B6F7E4519A8D8C000409378 /* Supporting Files */,
+			);
+			path = PostboksHelper;
+			sourceTree = "<group>";
+		};
+		9B6F7E4519A8D8C000409378 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F7E4619A8D8C000409378 /* PostboksHelper-Info.plist */,
+				9B6F7E4A19A8D8C000409378 /* main.m */,
+				9B6F7E4C19A8D8C000409378 /* PostboksHelper-Prefix.pch */,
+				9B6F7E8719A8E25000409378 /* MainMenu.xib */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B6F7E3A19A8D8C000409378 /* PostboksHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B6F7E6C19A8D8C000409378 /* Build configuration list for PBXNativeTarget "PostboksHelper" */;
+			buildPhases = (
+				9B6F7E3719A8D8C000409378 /* Sources */,
+				9B6F7E3819A8D8C000409378 /* Frameworks */,
+				9B6F7E3919A8D8C000409378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PostboksHelper;
+			productName = eBoksSyncHelper;
+			productReference = 9B6F7E3B19A8D8C000409378 /* PostboksHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B6F7E3319A8D8C000409378 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Ole Gammelgaard";
+				TargetAttributes = {
+					9B6F7E3A19A8D8C000409378 = {
+						DevelopmentTeam = 9KEZK5CK2V;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 9B6F7E3619A8D8C000409378 /* Build configuration list for PBXProject "PostboksHelper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				da,
+			);
+			mainGroup = 9B6F7E3219A8D8C000409378;
+			productRefGroup = 9B6F7E3C19A8D8C000409378 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B6F7E3A19A8D8C000409378 /* PostboksHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B6F7E3919A8D8C000409378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B6F7E8519A8E25000409378 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B6F7E3719A8D8C000409378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B6F7E5219A8D8C000409378 /* HelperAppDelegate.m in Sources */,
+				9B6F7E4B19A8D8C000409378 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9B6F7E8719A8E25000409378 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B6F7E8619A8E25000409378 /* en */,
+				9B70BF2119CB9735005556C3 /* da */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9B3865301A2D17E600FE355B /* DeveloperID */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = DeveloperID;
+		};
+		9B3865311A2D17E600FE355B /* DeveloperID */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				INFOPLIST_FILE = "PostboksHelper/PostboksHelper-Info.plist";
+				PRODUCT_NAME = PostboksHelper;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				WRAPPER_EXTENSION = app;
+			};
+			name = DeveloperID;
+		};
+		9B6F7E6A19A8D8C000409378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9B6F7E6B19A8D8C000409378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9B6F7E6D19A8D8C000409378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PostboksHelper/PostboksHelper-Info.plist";
+				PRODUCT_NAME = PostboksHelper;
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9B6F7E6E19A8D8C000409378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				INFOPLIST_FILE = "PostboksHelper/PostboksHelper-Info.plist";
+				PRODUCT_NAME = PostboksHelper;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B6F7E3619A8D8C000409378 /* Build configuration list for PBXProject "PostboksHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B6F7E6A19A8D8C000409378 /* Debug */,
+				9B6F7E6B19A8D8C000409378 /* Release */,
+				9B3865301A2D17E600FE355B /* DeveloperID */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B6F7E6C19A8D8C000409378 /* Build configuration list for PBXNativeTarget "PostboksHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B6F7E6D19A8D8C000409378 /* Debug */,
+				9B6F7E6E19A8D8C000409378 /* Release */,
+				9B3865311A2D17E600FE355B /* DeveloperID */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B6F7E3319A8D8C000409378 /* Project object */;
+}

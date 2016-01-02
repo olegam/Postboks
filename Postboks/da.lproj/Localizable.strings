@@ -1,0 +1,41 @@
+
+
+// Statusbar
+"failed-retry-in" = "Fejlede. Prøver igen om %@";
+"syncs-every" = "Downloader hver %@";
+"next-sync-in" = "Næste download om %@";
+"no-internet" = "Ingen internetforbindelse";
+"status-syncing" = "Downloader...";
+"sync-now" = "Download nu";
+"open-documents-folder" = "Åbn mappe med dokumenter";
+"preferences-open" = "Indstillinger...";
+"quit" = "Slut Postboks";
+
+"preferences-title" = "Indstillinger";
+"eboks-help" = "Postboks har brug for de samme login-oplysninger som eBoks mobil app'en. Log ind på e-boks.dk hjemmesiden med dit NemID og find siden med indstillinger hvor du kan se din aktiveringskode og vælge en adgangskode.";
+"account-header" = "Konto";
+"cpr-legend" = "CPR nr.:";
+"password-legend" = "Kodeord:";
+"activation-code-legend" = "Aktiveringskode:";
+"cancel" = "Annuller";
+"save" = "Gem";
+"copyright-information" = "Copyright (c) 2014 Ole Gammelgaard Poulsen";
+"download-folder-legend" = "Mappe til dokumenter";
+"change-folder-button" = "Skift";
+"version-format" = "Version %@ (%@)";
+"start-automatically" = "Start Postboks automatisk";
+"beta-expired" = "Beta er udløbet.";
+"error-title" = "Der skete en fejl";
+"OK" = "OK";
+"automatic-launch-activate-error" = "Automatisk start af app'en kunne ikke aktiveres";
+"automatic-launch-deactivate-launch" = "Automatisk start af app'en kunne ikke deaktiveres";
+"general-tab" = "Generelt";
+"accounts-tab" = "Kontoer";
+"help-button" = "Hjælp";
+
+"account-sidebar-title" = "Konto";
+"launch-sidebar-title" = "Opstart";
+"download-folder-sidebar-title" = "Download mappe";
+"add-account-cell-title" = "Tilføj konto";
+"account-already-exists" = "Du har allerede en konto med CPR %@";
+"no-accounts" = "Ingen konti";
