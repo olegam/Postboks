@@ -38,3 +38,4 @@
 "add-account-cell-title" = "Add account";
 "account-already-exists" = "There is already an account with id %@";
 "no-accounts" = "No accounts";
+"already-contains-files-format" = "%@ already contains files or folders. It is recommended to select an empty folder.";

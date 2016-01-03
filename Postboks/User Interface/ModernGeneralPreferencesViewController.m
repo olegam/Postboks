@@ -114,10 +114,38 @@
 		SyncScheduler *syncScheduler = [SyncScheduler sharedInstance];
 		if (result == NSFileHandlingPanelOKButton && !syncScheduler.syncing) { // don't move files while syncing
 			NSString *path = [openPanel.directoryURL path];
-			[[SettingsManager sharedInstance] setDocumentsBasePath:path];
+
+			// Help user not select a directory already containing files
+			BOOL directoryIsEmpty = [self isEmptyDirectory:path];
+			if (!directoryIsEmpty) {
+				NSModalResponse alertResult = [self showWarningAlertForNonEmptyDirectory:path];
+				if (alertResult == NSAlertFirstButtonReturn) {
+					[[SettingsManager sharedInstance] setDocumentsBasePath:path];
+				}
+			} else {
+				[[SettingsManager sharedInstance] setDocumentsBasePath:path];
+			}
 		}
 		[self updateFolderLabel];
 	}];
+}
+
+- (NSModalResponse)showWarningAlertForNonEmptyDirectory:(NSString *)path {
+	NSAlert *alert = [[NSAlert alloc] init];
+	[alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+	[alert addButtonWithTitle:NSLocalizedString(@"cancel", @"Cancel")];
+	[alert setMessageText:@"Use non-empty directory?"];
+	NSString *infoText = [NSString stringWithFormat:NSLocalizedString(@"already-contains-files-format", nil), path];
+	[alert setInformativeText:infoText];
+	[alert setAlertStyle:NSWarningAlertStyle];
+	NSModalResponse alertResult = [alert runModal];
+	return alertResult;
+}
+
+- (BOOL)isEmptyDirectory:(NSString *)path {
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSArray *items = [fm contentsOfDirectoryAtPath:path error:nil];
+	return items.count == 0;
 }
 
 - (void)updateFolderLabel {

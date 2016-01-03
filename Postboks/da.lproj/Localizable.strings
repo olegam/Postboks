@@ -39,3 +39,4 @@
 "add-account-cell-title" = "Tilføj konto";
 "account-already-exists" = "Du har allerede en konto med CPR %@";
 "no-accounts" = "Ingen konti";
+"already-contains-files-format" = "%@ indeholder allerede filer eller mapper. Det anbefales at vælge en tom mappe.";
