@@ -71,7 +71,7 @@ static NSString *const SettingsKeyDownloadInterval = @"download_interval";
 		}
 		if (error) {
 			NSLog(@"Error restoring security-scoped bookmark %@", error);
-			[self setDocumentsBasePath:nil];
+			[self setDocumentsBasePath:nil andMoveFiles:false];
 		}
 		NSString *path = [url path];
 		if ([self validDirectoryAtPath:path]) {
@@ -95,7 +95,7 @@ static NSString *const SettingsKeyDownloadInterval = @"download_interval";
 	return pdfBaseFolder;
 }
 
-- (void)setDocumentsBasePath:(NSString *)documentsBasePath {
+- (void)setDocumentsBasePath:(NSString *)documentsBasePath andMoveFiles:(bool)move {
 	if (!documentsBasePath) {
 		[_defaults removeObjectForKey:PostboksDocumentBaseBookmarkKey];
 		[_defaults synchronize];
@@ -115,12 +115,12 @@ static NSString *const SettingsKeyDownloadInterval = @"download_interval";
 	[_defaults setValue:bookmarkData forKey:PostboksDocumentBaseBookmarkKey];
 	[_defaults synchronize];
 
-	if (oldPath && ![oldPath isEqualToString:documentsBasePath]) {
+	if (move) {
 		// move the files
 		NSFileManager *fm = [NSFileManager defaultManager];
 		NSArray *items = [fm contentsOfDirectoryAtPath:oldPath error:nil];
 		for (NSString *itemPath in items) {
-			NSString *sourcePath= [oldPath stringByAppendingPathComponent:itemPath];
+			NSString *sourcePath = [oldPath stringByAppendingPathComponent:itemPath];
 			NSString *destinationPath = [documentsBasePath stringByAppendingPathComponent:itemPath];
 			if ([self validDirectoryAtPath:sourcePath]) {
 				NSError *moveError = nil;
@@ -130,7 +130,7 @@ static NSString *const SettingsKeyDownloadInterval = @"download_interval";
 				}
 			}
 		}
-	}
+    }
 }
 
 - (NSArray *)accounts {

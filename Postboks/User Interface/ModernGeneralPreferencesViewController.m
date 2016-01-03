@@ -112,21 +112,27 @@
 
 	[openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
 		SyncScheduler *syncScheduler = [SyncScheduler sharedInstance];
+        NSString* oldPath = [[SettingsManager sharedInstance] documentsBasePath];
+
 		if (result == NSFileHandlingPanelOKButton && !syncScheduler.syncing) { // don't move files while syncing
 			NSString *path = [openPanel.directoryURL path];
-
+			BOOL moveFiles = NO;
 			// Help user not select a directory already containing files
 			BOOL directoryIsEmpty = [self isEmptyDirectory:path];
 			if (!directoryIsEmpty) {
 				NSModalResponse alertResult = [self showWarningAlertForNonEmptyDirectory:path];
-				if (alertResult == NSAlertFirstButtonReturn) {
-					[[SettingsManager sharedInstance] setDocumentsBasePath:path];
+				if (alertResult != NSAlertFirstButtonReturn) {
+					return;
 				}
-			} else {
-				[[SettingsManager sharedInstance] setDocumentsBasePath:path];
 			}
+
+			if (oldPath && ![oldPath isEqualToString:path] && ![self isEmptyDirectory:oldPath]) {
+				NSModalResponse alertResult = [self showWarningAlertForMovingFiles:path withOldPath:oldPath];
+				moveFiles = alertResult == NSAlertFirstButtonReturn;
+			}
+			[[SettingsManager sharedInstance] setDocumentsBasePath:path andMoveFiles:moveFiles];
+			[self updateFolderLabel];
 		}
-		[self updateFolderLabel];
 	}];
 }
 
@@ -137,6 +143,19 @@
 	[alert setMessageText:@"Use non-empty directory?"];
 	NSString *infoText = [NSString stringWithFormat:NSLocalizedString(@"already-contains-files-format", nil), path];
 	[alert setInformativeText:infoText];
+	[alert setAlertStyle:NSWarningAlertStyle];
+	NSModalResponse alertResult = [alert runModal];
+	return alertResult;
+}
+
+
+- (NSModalResponse)showWarningAlertForMovingFiles:(NSString *)path withOldPath:(NSString*)oldPath {
+	NSString *msg =[NSString stringWithFormat:@"Do you want me to move files from %@ to %@?", oldPath, path];
+	NSAlert *alert = [[NSAlert alloc] init];
+	[alert addButtonWithTitle:@"Yes"];
+	[alert addButtonWithTitle:@"No"];
+	[alert setMessageText:@"Move files?"];
+	[alert setInformativeText:msg];
 	[alert setAlertStyle:NSWarningAlertStyle];
 	NSModalResponse alertResult = [alert runModal];
 	return alertResult;
