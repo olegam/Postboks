@@ -46,4 +46,4 @@
 "already-contains-files-format" = "%@ already contains files or folders. It is recommended to select an empty folder.";
 
 "move-files-question" = "Move files?";
-"move-files-question-with-paths" = "Do you want me to move files from %@ to %@?;
+"move-files-question-with-paths" = "Do you want me to move files from %@ to %@?";
