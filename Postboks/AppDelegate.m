@@ -41,6 +41,7 @@ static const int MaxFoldersToOpen = 3;
 	
 	[[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:YES];
 	[[SUUpdater sharedUpdater] setAutomaticallyDownloadsUpdates:YES];
+	[[SUUpdater sharedUpdater] checkForUpdates:nil];
 	
 	self.appBundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
 	self.appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
