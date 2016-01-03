@@ -140,7 +140,7 @@
 	NSAlert *alert = [[NSAlert alloc] init];
 	[alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
 	[alert addButtonWithTitle:NSLocalizedString(@"cancel", @"Cancel")];
-	[alert setMessageText:@"Use non-empty directory?"];
+	[alert setMessageText:NSLocalizedString(@"use-non-empty-directory-question", @"Use non-empty directory?")];
 	NSString *infoText = [NSString stringWithFormat:NSLocalizedString(@"already-contains-files-format", nil), path];
 	[alert setInformativeText:infoText];
 	[alert setAlertStyle:NSWarningAlertStyle];
