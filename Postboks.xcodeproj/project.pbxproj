@@ -56,6 +56,8 @@
 		9B81F44119993EC4006F4846 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B81F43F19993EC4006F4846 /* MainMenu.xib */; };
 		9BF53CA21C393E6A008EDF19 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF53CA01C393E6A008EDF19 /* Fabric.framework */; };
 		9BF53CA31C393E6A008EDF19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF53CA11C393E6A008EDF19 /* Crashlytics.framework */; };
+		9BF53CAA1C395E38008EDF19 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF53CA91C395E38008EDF19 /* Sparkle.framework */; };
+		9BF53CAC1C395EAE008EDF19 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BF53CA91C395E38008EDF19 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,16 @@
 			dstSubfolderSpec = 1;
 			files = (
 				9B70BF1F19CB9496005556C3 /* PostboksHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BF53CAB1C395E99008EDF19 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9BF53CAC1C395EAE008EDF19 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +186,7 @@
 		9B81F43D19993EC4006F4846 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9BF53CA01C393E6A008EDF19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		9BF53CA11C393E6A008EDF19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		9BF53CA91C395E38008EDF19 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		CA8658EFD47CE9C6299AFAEA /* Pods.developerid.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.developerid.xcconfig; path = "Pods/Target Support Files/Pods/Pods.developerid.xcconfig"; sourceTree = "<group>"; };
 		CD9C59AAB4C2472CB05AD0A8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,6 +198,7 @@
 			files = (
 				9B6F7E7C19A8DA0D00409378 /* ServiceManagement.framework in Frameworks */,
 				3C3589C8B70547499696EB34 /* libPods.a in Frameworks */,
+				9BF53CAA1C395E38008EDF19 /* Sparkle.framework in Frameworks */,
 				9BF53CA31C393E6A008EDF19 /* Crashlytics.framework in Frameworks */,
 				9BF53CA21C393E6A008EDF19 /* Fabric.framework in Frameworks */,
 			);
@@ -372,6 +386,7 @@
 		AD0432BAB5B7458E851D12DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BF53CA91C395E38008EDF19 /* Sparkle.framework */,
 				9B6F7E7B19A8DA0D00409378 /* ServiceManagement.framework */,
 				CD9C59AAB4C2472CB05AD0A8 /* libPods.a */,
 			);
@@ -403,6 +418,7 @@
 				9B6F7E7819A8D9B200409378 /* CopyFiles */,
 				71F8F1608B1A8B89D4547B40 /* Embed Pods Frameworks */,
 				9BF53C9F1C393E41008EDF19 /* Crashlytics */,
+				9BF53CAB1C395E99008EDF19 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -646,7 +662,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -673,7 +689,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -707,7 +723,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -750,7 +766,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -776,7 +792,7 @@
 				CODE_SIGN_ENTITLEMENTS = Postboks/Postboks.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -800,7 +816,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

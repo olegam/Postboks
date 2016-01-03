@@ -20,13 +20,13 @@
 #import "StatusBarController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
+#import <Sparkle/Sparkle.h>
 
 
 static const int MaxFilesToOpenInPreview = 4;
 static const int MaxFoldersToOpen = 3;
 
-@interface AppDelegate () <NSUserNotificationCenterDelegate>
+@interface AppDelegate () <NSUserNotificationCenterDelegate, SUUpdaterDelegate>
 
 @property (nonatomic, strong) StatusBarController *statusBarController;
 @property (weak) IBOutlet NSWindow *window;
@@ -35,13 +35,12 @@ static const int MaxFoldersToOpen = 3;
 
 @implementation AppDelegate
 
-+ (void)initialize {
-
-}
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	[[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
 	[Fabric with:@[[Crashlytics class]]];
+	
+	[[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:YES];
+	[[SUUpdater sharedUpdater] setAutomaticallyDownloadsUpdates:YES];
 	
 	self.appBundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
 	self.appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
@@ -82,6 +81,5 @@ static const int MaxFoldersToOpen = 3;
 		[[NSWorkspace sharedWorkspace] openFile:userBaseDownloadPath];
 	}
 }
-
 
 @end
