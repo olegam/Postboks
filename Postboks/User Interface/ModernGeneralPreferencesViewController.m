@@ -112,21 +112,27 @@
 
 	[openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
 		SyncScheduler *syncScheduler = [SyncScheduler sharedInstance];
+		NSString* oldPath = [[SettingsManager sharedInstance] documentsBasePath];
+
 		if (result == NSFileHandlingPanelOKButton && !syncScheduler.syncing) { // don't move files while syncing
 			NSString *path = [openPanel.directoryURL path];
-
+			BOOL moveFiles = NO;
 			// Help user not select a directory already containing files
 			BOOL directoryIsEmpty = [self isEmptyDirectory:path];
 			if (!directoryIsEmpty) {
 				NSModalResponse alertResult = [self showWarningAlertForNonEmptyDirectory:path];
-				if (alertResult == NSAlertFirstButtonReturn) {
-					[[SettingsManager sharedInstance] setDocumentsBasePath:path];
+				if (alertResult != NSAlertFirstButtonReturn) {
+					return;
 				}
-			} else {
-				[[SettingsManager sharedInstance] setDocumentsBasePath:path];
 			}
+
+			if (oldPath && ![oldPath isEqualToString:path] && ![self isEmptyDirectory:oldPath]) {
+				NSModalResponse alertResult = [self showWarningAlertForMovingFiles:path withOldPath:oldPath];
+				moveFiles = alertResult == NSAlertFirstButtonReturn;
+			}
+			[[SettingsManager sharedInstance] setDocumentsBasePath:path andMoveFiles:moveFiles];
+			[self updateFolderLabel];
 		}
-		[self updateFolderLabel];
 	}];
 }
 
@@ -134,8 +140,22 @@
 	NSAlert *alert = [[NSAlert alloc] init];
 	[alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
 	[alert addButtonWithTitle:NSLocalizedString(@"cancel", @"Cancel")];
-	[alert setMessageText:@"Use non-empty directory?"];
+	[alert setMessageText:NSLocalizedString(@"use-non-empty-directory-question", @"Use non-empty directory?")];
 	NSString *infoText = [NSString stringWithFormat:NSLocalizedString(@"already-contains-files-format", nil), path];
+	[alert setInformativeText:infoText];
+	[alert setAlertStyle:NSWarningAlertStyle];
+	NSModalResponse alertResult = [alert runModal];
+	return alertResult;
+}
+
+
+- (NSModalResponse)showWarningAlertForMovingFiles:(NSString *)path withOldPath:(NSString*)oldPath {
+	NSAlert *alert = [[NSAlert alloc] init];
+	[alert addButtonWithTitle:NSLocalizedString(@"yes", @"Yes")];
+	[alert addButtonWithTitle:NSLocalizedString(@"no", @"No")];
+	[alert setMessageText:NSLocalizedString(@"move-files-question", @"Move files?")];
+	
+	NSString *infoText =[NSString stringWithFormat:NSLocalizedString(@"move-files-question-with-paths", nil), oldPath, path];
 	[alert setInformativeText:infoText];
 	[alert setAlertStyle:NSWarningAlertStyle];
 	NSModalResponse alertResult = [alert runModal];

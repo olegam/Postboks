@@ -27,6 +27,9 @@
 "beta-expired" = "Beta er udløbet.";
 "error-title" = "Der skete en fejl";
 "OK" = "OK";
+"yes" = "Ja";
+"no" = "Nej";
+
 "automatic-launch-activate-error" = "Automatisk start af app'en kunne ikke aktiveres";
 "automatic-launch-deactivate-launch" = "Automatisk start af app'en kunne ikke deaktiveres";
 "general-tab" = "Generelt";
@@ -39,4 +42,8 @@
 "add-account-cell-title" = "Tilføj konto";
 "account-already-exists" = "Du har allerede en konto med CPR %@";
 "no-accounts" = "Ingen konti";
+"use-non-empty-directory-question" = "Mappe indeholder filer eller mapper";
 "already-contains-files-format" = "%@ indeholder allerede filer eller mapper. Det anbefales at vælge en tom mappe.";
+
+"move-files-question" = "Flyt filer?"
+"move-files-question-with-paths" = "Skal jeg flytte filer og mapper i %@ til %@?

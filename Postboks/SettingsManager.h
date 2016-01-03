@@ -12,7 +12,6 @@ static NSString *const PostboksDocumentBaseBookmarkKey = @"documentBaseBookmark"
 
 @interface SettingsManager : NSObject
 
-@property(nonatomic, strong) NSString *documentsBasePath;
 @property(nonatomic, readonly) NSArray *accounts;
 @property(nonatomic, assign) NSTimeInterval downloadInterval;
 @property(nonatomic, strong) NSDate *lastCompletedSyncDate;
@@ -26,4 +25,9 @@ static NSString *const PostboksDocumentBaseBookmarkKey = @"documentBaseBookmark"
 - (BOOL)hasAccountForId:(NSString *)accountId;
 
 - (void)removeAccount:(EboksAccount *)account;
+
+- (NSString *)documentsBasePath;
+
+- (void)setDocumentsBasePath:(NSString*)path andMoveFiles:(bool)move;
+
 @end
