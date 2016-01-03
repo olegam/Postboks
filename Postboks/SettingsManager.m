@@ -130,7 +130,7 @@ static NSString *const SettingsKeyDownloadInterval = @"download_interval";
 				}
 			}
 		}
-    }
+	}
 }
 
 - (NSArray *)accounts {
