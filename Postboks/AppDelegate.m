@@ -40,6 +40,7 @@ static const int MaxFoldersToOpen = 3;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+	[[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
 	[Fabric with:@[[Crashlytics class]]];
 	
 	self.appBundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
