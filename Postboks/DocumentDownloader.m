@@ -76,7 +76,7 @@ static const int MaxNotificationPathLength = 90;
 					NSString *filePath = [message fullFilePath];
 					if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
 					[self createFolder:[message folderPath]];
-					return [[[[api getPdfDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
+					return [[[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
 						[fileData writeToFile:filePath atomically:YES];
 						[newlyDownloadedMessages addObject:message];
 					}] doError:^(NSError *error) {
@@ -121,11 +121,11 @@ static const int MaxNotificationPathLength = 90;
 	notification.actionButtonTitle = @"Open";
 	notification.hasActionButton = YES;
 	notification.soundName = NSUserNotificationDefaultSoundName;
-	NSArray *pdfPaths = [messages map:^id(MessageInfo *message) {
+	NSArray *filePaths = [messages map:^id(MessageInfo *message) {
 		return [message filePathRelativeToBasePath];
 	}];
 
-	NSArray *folderPaths = [pdfPaths map:^id(NSString *path) {
+	NSArray *folderPaths = [filePaths map:^id(NSString *path) {
 		NSArray *pathComponents = [path pathComponents];
 		NSString *folderPath = [[[pathComponents arrayUntilIndex:pathComponents.count - 1] componentsJoinedByString:@"/"] substringFromIndex:1];
 		return folderPath;
@@ -133,16 +133,16 @@ static const int MaxNotificationPathLength = 90;
 	NSArray *uniqueuFolders = [[NSSet setWithArray:folderPaths] allObjects];
 
 	// filter out long paths to avoid 1k limit
-	if (pdfPaths.count > 1) {
-		pdfPaths = [pdfPaths filter:^BOOL(NSString *path) {
+	if (filePaths.count > 1) {
+		filePaths = [filePaths filter:^BOOL(NSString *path) {
 			return path.length < MaxNotificationPathLength;
 		}];
 	}
-	if (pdfPaths.count > MaxNotificationDocuments) {
-		pdfPaths = [pdfPaths arrayUntilIndex:MaxNotificationDocuments - 1];
+	if (filePaths.count > MaxNotificationDocuments) {
+		filePaths = [filePaths arrayUntilIndex:MaxNotificationDocuments - 1];
 	}
 	notification.userInfo = @{
-			NotificationKeyPdfPaths : pdfPaths,
+			NotificationKeyPdfPaths : filePaths,
 			NotificationKeyUserId : userId,
 			NotificationKeyNumFiles : @(messages.count),
 			NotificationKeyNumFolders : @(uniqueuFolders.count),

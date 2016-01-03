@@ -17,6 +17,7 @@
 @property(nonatomic, assign) BOOL unread;
 @property(nonatomic, copy) NSString *lastAction;
 @property(nonatomic, strong) NSString *userId;
+@property(nonatomic, strong) NSString *fileFormat;
 
 + (instancetype)messageFromXMLElement:(ONOXMLElement *)element userId:(NSString *)userId;
 

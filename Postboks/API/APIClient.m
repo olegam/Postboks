@@ -60,6 +60,13 @@
 	[request setValue:@"eboks/35 CFNetwork/672.1.15 Darwin/14.0.0" forHTTPHeaderField:@"User-Agent"];
 
 	AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	
+#ifdef DEBUG
+	AFSecurityPolicy *sec = [[AFSecurityPolicy alloc] init];
+	[sec setAllowInvalidCertificates:YES];
+	requestOperation.securityPolicy = sec;
+#endif
+	
 	requestOperation.responseSerializer = [AFOnoResponseSerializer XMLResponseSerializer];
 	RACSignal *requestSignal = [self signalForRequestOperation:requestOperation];
 
@@ -105,7 +112,7 @@
 	return folderSignal;
 }
 
-- (RACSignal *)getPdfDataForMessageId:(NSString *)messageId session:(EboksSession *)session {
+- (RACSignal *)getFileDataForMessageId:(NSString *)messageId session:(EboksSession *)session {
 	NSString *contentPathFormat = @"https://rest.e-boks.dk/mobile/1/xml.svc/en-gb/%@/0/mail/folder/0/message/%@/content";
 	NSString *urlString = [NSString stringWithFormat:contentPathFormat, session.internalUserId, messageId];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:NO];

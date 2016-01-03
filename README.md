@@ -22,7 +22,6 @@ The postboks app will live in your menu bar and check for new documents every ho
 
 ## Limitiations
 
-- Currently only PDF documents are supported.
 - Error handling is limited.
 - The status bar icon does not look right in OS X dark mode.
 
@@ -37,7 +36,7 @@ The postboks app will live in your menu bar and check for new documents every ho
 
 ## Roadmap
 - Support for authorization to multiple inboxes including company inboxes.
-- Support for other document types than PDF.
+- Add support for automatic app updates.
 - Improve icon and graphical appearance.
 
 ## Contributing

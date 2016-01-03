@@ -25,12 +25,13 @@
 	NSString *dateString = [element valueForAttribute:@"receivedDateTime"];
 	message.receivedDate = [[MessageInfo dateParsingFormatter] dateFromString:dateString];
 	message.userId = userId;
-
+	message.fileFormat = [[element valueForAttribute:@"format"] lowercaseString];
+	
 	return message;
 }
 
 - (NSString *)fileName {
-	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@).pdf", self.name, self.senderName];
+	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@).%@", self.name, self.senderName, self.fileFormat];
 	NSString *safeName = [MessageInfo sanitizeFileNameString:unEscapedName];
 	return safeName;
 }

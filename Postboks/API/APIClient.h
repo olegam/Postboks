@@ -20,5 +20,5 @@
 
 - (RACSignal *)getFolderId:(NSString *)folderId session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take;
 
-- (RACSignal *)getPdfDataForMessageId:(NSString *)messageId session:(EboksSession *)session;
+- (RACSignal *)getFileDataForMessageId:(NSString *)messageId session:(EboksSession *)session;
 @end
