@@ -54,6 +54,8 @@
 		9B81F43C19993EC4006F4846 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B81F43B19993EC4006F4846 /* AppDelegate.m */; };
 		9B81F43E19993EC4006F4846 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B81F43D19993EC4006F4846 /* Images.xcassets */; };
 		9B81F44119993EC4006F4846 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B81F43F19993EC4006F4846 /* MainMenu.xib */; };
+		9BF53CA21C393E6A008EDF19 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF53CA01C393E6A008EDF19 /* Fabric.framework */; };
+		9BF53CA31C393E6A008EDF19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF53CA11C393E6A008EDF19 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +172,8 @@
 		9B81F43A19993EC4006F4846 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9B81F43B19993EC4006F4846 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9B81F43D19993EC4006F4846 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9BF53CA01C393E6A008EDF19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		9BF53CA11C393E6A008EDF19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		CA8658EFD47CE9C6299AFAEA /* Pods.developerid.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.developerid.xcconfig; path = "Pods/Target Support Files/Pods/Pods.developerid.xcconfig"; sourceTree = "<group>"; };
 		CD9C59AAB4C2472CB05AD0A8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +185,8 @@
 			files = (
 				9B6F7E7C19A8DA0D00409378 /* ServiceManagement.framework in Frameworks */,
 				3C3589C8B70547499696EB34 /* libPods.a in Frameworks */,
+				9BF53CA31C393E6A008EDF19 /* Crashlytics.framework in Frameworks */,
+				9BF53CA21C393E6A008EDF19 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +220,8 @@
 		85C5A48DBFB6C3B6B5AAB1BD /* External */ = {
 			isa = PBXGroup;
 			children = (
+				9BF53CA01C393E6A008EDF19 /* Fabric.framework */,
+				9BF53CA11C393E6A008EDF19 /* Crashlytics.framework */,
 				85C5A7F079791C2116E4ECBC /* RegExCategories */,
 			);
 			path = External;
@@ -394,6 +402,7 @@
 				681258DCFA164792BBCF287F /* Copy Pods Resources */,
 				9B6F7E7819A8D9B200409378 /* CopyFiles */,
 				71F8F1608B1A8B89D4547B40 /* Embed Pods Frameworks */,
+				9BF53C9F1C393E41008EDF19 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -533,6 +542,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9BF53C9F1C393E41008EDF19 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 3e164caaa321ba90ec629395e8c09bf0d364db84 aaa26d3e545849b36725a2ef9034e34a51bdeff47cdb120e7c0ae661ee03e8e5";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -651,6 +674,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 14;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = Postboks/Prefix.pch;
 				INFOPLIST_FILE = Postboks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -750,6 +777,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 14;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = Postboks/Prefix.pch;
 				INFOPLIST_FILE = Postboks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -770,6 +801,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 14;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = Postboks/Prefix.pch;
 				INFOPLIST_FILE = Postboks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

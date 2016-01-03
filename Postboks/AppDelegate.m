@@ -18,6 +18,9 @@
 #import "SettingsManager.h"
 #import "SyncScheduler.h"
 #import "StatusBarController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 
 static const int MaxFilesToOpenInPreview = 4;
@@ -37,6 +40,8 @@ static const int MaxFoldersToOpen = 3;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+	[Fabric with:@[[Crashlytics class]]];
+	
 	self.appBundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
 	self.appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
 	
