@@ -112,7 +112,7 @@
 
 	[openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
 		SyncScheduler *syncScheduler = [SyncScheduler sharedInstance];
-        NSString* oldPath = [[SettingsManager sharedInstance] documentsBasePath];
+		NSString* oldPath = [[SettingsManager sharedInstance] documentsBasePath];
 
 		if (result == NSFileHandlingPanelOKButton && !syncScheduler.syncing) { // don't move files while syncing
 			NSString *path = [openPanel.directoryURL path];
@@ -150,12 +150,13 @@
 
 
 - (NSModalResponse)showWarningAlertForMovingFiles:(NSString *)path withOldPath:(NSString*)oldPath {
-	NSString *msg =[NSString stringWithFormat:@"Do you want me to move files from %@ to %@?", oldPath, path];
 	NSAlert *alert = [[NSAlert alloc] init];
-	[alert addButtonWithTitle:@"Yes"];
-	[alert addButtonWithTitle:@"No"];
-	[alert setMessageText:@"Move files?"];
-	[alert setInformativeText:msg];
+	[alert addButtonWithTitle:NSLocalizedString(@"yes", @"Yes")];
+	[alert addButtonWithTitle:NSLocalizedString(@"no", @"No")];
+	[alert setMessageText:NSLocalizedString(@"move-files-question", @"Move files?")];
+	
+	NSString *infoText =[NSString stringWithFormat:NSLocalizedString(@"move-files-question-with-paths", nil), oldPath, path];
+	[alert setInformativeText:infoText];
 	[alert setAlertStyle:NSWarningAlertStyle];
 	NSModalResponse alertResult = [alert runModal];
 	return alertResult;

@@ -27,6 +27,8 @@
 "beta-expired" = "Beta expired.";
 "error-title" = "An error ocurred";
 "OK" = "OK";
+"yes" = "Yes";
+"no" = "No"
 "automatic-launch-activate-error" = "Could not activate automatic launch.";
 "automatic-launch-deactivate-launch" = "Could not deactivate automatic launch.";
 "general-tab" = "General";
@@ -39,3 +41,5 @@
 "account-already-exists" = "There is already an account with id %@";
 "no-accounts" = "No accounts";
 "already-contains-files-format" = "%@ already contains files or folders. It is recommended to select an empty folder.";
+"move-files-question" = "Move files?"
+"move-files-question-with-paths" = "Do you want me to move files from %@ to %@?
