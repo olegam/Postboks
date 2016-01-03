@@ -46,7 +46,6 @@ You should note that your credentials are securely stored in the OS X keychain, 
 
 ## Roadmap
 - Support for authorization to multiple inboxes including company inboxes.
-- Add support for automatic app updates.
 - Improve icon and graphical appearance.
 
 ## Contributing
