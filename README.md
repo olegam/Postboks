@@ -8,7 +8,13 @@ Whenever you receive a new document you will get a notification and clicking it 
 
 ## Gettings started
 
-### Sign in using your e-boks mobile app credentials
+### 1. Download the latest version of Postboks
+Get it from [The releases page](https://github.com/olegam/Postboks/releases/tag/v0.2b15).
+
+
+### 2. Get your e-boks mobile access credentials from e-boks.dk
+
+### 3. Sign in using your e-boks mobile access credentials
 <img src="screenshots/sign_in.png" />
 
 
@@ -18,6 +24,10 @@ You can optinally choose to have Postboks started automatically when you reboot 
 The postboks app will live in your menu bar and check for new documents every hour.
 
 <img src="screenshots/menu_bar.png" />
+
+Click the "Open documents folder" to see how all your documents are nicely organized by month.
+
+You should note that your credentials are securely stored in the OS X keychain, but all your documents are stored as files on the disk. So you may want to enable disk encryption on your mac to make sure sensitive documents are encrypted.
 
 
 ## Limitiations
