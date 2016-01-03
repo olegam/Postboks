@@ -39,9 +39,7 @@ static const int MaxFoldersToOpen = 3;
 	[[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
 	[Fabric with:@[[Crashlytics class]]];
 	
-	[[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:YES];
-	[[SUUpdater sharedUpdater] setAutomaticallyDownloadsUpdates:YES];
-	[[SUUpdater sharedUpdater] checkForUpdates:nil];
+	[[SUUpdater sharedUpdater] installUpdatesIfAvailable];
 	
 	self.appBundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
 	self.appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
