@@ -9,7 +9,7 @@ Whenever you receive a new document you will get a notification and clicking it 
 ## Gettings started
 
 ### 1. Download the latest version of Postboks
-Get it from [The releases page](https://github.com/olegam/Postboks/releases/tag/v0.2b15).
+Get it from [The releases page](https://github.com/olegam/Postboks/releases/latest).
 
 
 ### 2. Get your e-boks mobile access credentials from e-boks.dk
