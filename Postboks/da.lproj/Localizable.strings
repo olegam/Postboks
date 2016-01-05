@@ -45,5 +45,6 @@
 "use-non-empty-directory-question" = "Mappe indeholder filer eller mapper";
 "already-contains-files-format" = "%@ indeholder allerede filer eller mapper. Det anbefales at vælge en tom mappe.";
 
-"move-files-question" = "Flyt filer?"
-"move-files-question-with-paths" = "Skal jeg flytte filer og mapper i %@ til %@?"
+"move-files-question" = "Flyt filer?";
+"move-files-question-with-paths" = "Skal jeg flytte filer og mapper i %@ til %@?";
+
