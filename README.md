@@ -1,5 +1,5 @@
 # Postboks
-The Postboks app syncs your e-boks documents to a folder on your mac in the background. You never have to log in to the e-boks website using NemID again.
+The Postboks app syncs your e-Boks documents to a folder on your mac in the background. You never have to log in to the e-Boks website using NemID again.
 
 
 Whenever you receive a new document you will get a notification and clicking it opens the PDF in Preview.app.
@@ -12,9 +12,9 @@ Whenever you receive a new document you will get a notification and clicking it 
 Get it from [The releases page](https://github.com/olegam/Postboks/releases/latest).
 
 
-### 2. Get your e-boks mobile access credentials from e-boks.dk
+### 2. Get your e-Boks mobile access credentials from e-boks.dk
 
-### 3. Sign in using your e-boks mobile access credentials
+### 3. Sign in using your e-Boks mobile access credentials
 <img src="screenshots/sign_in.png" />
 
 
@@ -37,12 +37,12 @@ You should note that your credentials are securely stored in the OS X keychain, 
 
 ## Features
 
-- Syncs all e-boks PDF documents to a folder of your choice. E.g. your Dropbox folder.
+- Syncs all e-Boks PDF documents to a folder of your choice. E.g. your Dropbox folder.
 - Support for multiple accounts.
 - Secure storage of credentials using the OS X keychain.
 - Automatic start.
-- Sign in using the e-boks mobile app credentials.
-- Danish and Enlish localization.
+- Sign in using the e-Boks mobile app credentials.
+- Danish and English localization.
 
 ## Roadmap
 - Support for authorization to multiple inboxes including company inboxes.
