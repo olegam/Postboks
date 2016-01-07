@@ -29,6 +29,8 @@
 "OK" = "OK";
 "yes" = "Yes";
 "no" = "No";
+"sort-by-sender" = "Include sender name in subfolders";
+"download-folder-sender-sort-title" = "Sort by sender";
 
 "automatic-launch-activate-error" = "Could not activate automatic launch.";
 "automatic-launch-deactivate-launch" = "Could not deactivate automatic launch.";

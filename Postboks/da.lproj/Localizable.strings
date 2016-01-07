@@ -29,6 +29,8 @@
 "OK" = "OK";
 "yes" = "Ja";
 "no" = "Nej";
+"sort-by-sender" = "Inkludér afsender navn i undermapper";
+"download-folder-sender-sort-title" = "Sorter efter afsender";
 
 "automatic-launch-activate-error" = "Automatisk start af app'en kunne ikke aktiveres";
 "automatic-launch-deactivate-launch" = "Automatisk start af app'en kunne ikke deaktiveres";

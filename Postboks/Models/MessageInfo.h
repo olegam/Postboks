@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Ono/ONOXMLDocument.h>
+#import "SettingsManager.h"
 
 @interface MessageInfo : NSObject
 

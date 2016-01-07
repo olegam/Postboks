@@ -38,7 +38,11 @@
 
 - (NSString *)folderPathrelativeToBasePath {
 	NSString *dateString = [[MessageInfo simpleDateFormatter] stringFromDate:self.receivedDate];
-	return dateString;
+    
+    if([SettingsManager sharedInstance].sortBySender) {
+        return [dateString stringByAppendingPathComponent:self.senderName];
+    }
+    return dateString;
 }
 
 - (NSString *)folderPath {
