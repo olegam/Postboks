@@ -16,6 +16,7 @@ static NSString *const HelperAppBundleId = @"dk.postboks.helper";
 static NSString *const SettingsKeyStartOnLaunch = @"start_on_launch";
 static NSString *const SettingsKeyLastCompletedSyncDate = @"last_completed_sync_date";
 static NSString *const SettingsKeyDownloadInterval = @"download_interval";
+static NSString *const SettingsSortBySender = @"sort_by_sender";
 
 @implementation SettingsManager {
 	NSUserDefaults *_defaults;
@@ -248,6 +249,15 @@ static NSString *const SettingsKeyDownloadInterval = @"download_interval";
 	}
 }
 
+#pragma mark - Sort by sender
 
+- (BOOL)sortBySender {
+    return [_defaults boolForKey:SettingsSortBySender];
+}
+
+- (void)setSortBySender:(BOOL)sortBySender {
+    [_defaults setBool:sortBySender forKey:SettingsSortBySender];
+    [_defaults synchronize];
+}
 
 @end
