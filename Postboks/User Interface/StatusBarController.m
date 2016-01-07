@@ -51,6 +51,7 @@
 	self.statusItem.alternateImage = [NSImage imageNamed:@"menubar_icon_selected"];
 	self.statusItem.title = @"";
 	self.statusItem.highlightMode = YES;
+	[self.statusItem.image setTemplate:YES];
 
 	NSMenu *menu = [NSMenu new];
 	[menu setAutoenablesItems:NO];
