@@ -39,7 +39,7 @@ static const int MaxNotificationPathLength = 90;
 - (RACSignal *)downloadNewDocumentsAndNotifyUser {
 	EboksAccount *account = self.account;
 	NSLog(@"Starting download for user %@", account.userId);
-	return [[[APIClient sharedInstance] getSessionForAccount:account] flattenMap:^RACStream *(EboksSession *session) {
+	return [[[APIClient sharedInstanceForAccount:account] getSessionForAccount:account] flattenMap:^RACStream *(EboksSession *session) {
 		return [[[self downloadInboxDocumentsWithSession:session] doNext:^(RACTuple *tuple) {
 			RACTupleUnpack(NSArray *newlyDownloadedMessages, NSArray *failedToDownloadedMessages) = tuple;
 			NSLog(@"newlyDownloadedMessages = %@", [newlyDownloadedMessages description]);
@@ -58,7 +58,7 @@ static const int MaxNotificationPathLength = 90;
 
 
 - (RACSignal *)downloadInboxDocumentsWithSession:(EboksSession *)session {
-	APIClient *api = [APIClient sharedInstance];
+	APIClient *api = [APIClient sharedInstanceForAccount:self.account];
 
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSMutableArray *newlyDownloadedMessages = [NSMutableArray array];

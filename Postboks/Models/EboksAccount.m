@@ -13,5 +13,8 @@
 	return [NSString stringWithFormat:@"%@-xxxx", [self.userId substringToIndex:6]];
 }
 
+- (NSString *)nationality {
+  return _nationality ? [_nationality copy] : @"DK";
+}
 
 @end

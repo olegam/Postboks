@@ -11,6 +11,7 @@
 @property(nonatomic, copy) NSString *userId;
 @property(nonatomic, copy) NSString *password;
 @property(nonatomic, copy) NSString *activationCode;
+@property(nonatomic, copy) NSString *nationality;
 @property(nonatomic, copy) NSString *ownerName;
 @property(nonatomic, assign) BOOL failedLoading;
 

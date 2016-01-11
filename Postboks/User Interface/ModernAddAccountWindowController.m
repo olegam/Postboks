@@ -134,7 +134,7 @@
 		return;
 	}
 
-	[[[APIClient sharedInstance] getSessionForAccount:account] subscribeNext:^(EboksSession *session) {
+	[[[APIClient sharedInstanceForAccount:account] getSessionForAccount:account] subscribeNext:^(EboksSession *session) {
 		[[SettingsManager sharedInstance] saveAccount:account];
 		[self.dismissSignal sendNext:nil];
 	}                                                                  error:^(NSError *error) {
