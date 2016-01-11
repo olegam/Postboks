@@ -2,9 +2,10 @@
 The Postboks app syncs your e-Boks documents to a folder on your mac in the background. You never have to log in to the e-Boks website using NemID again.
 
 
-Whenever you receive a new document you will get a notification and clicking it opens the PDF in Preview.app.
+Whenever you receive a new document you will get a notification and clicking it opens the document in Preview.app.
 <img src="screenshots/new_document_notification.png" />
 
+Use at your own risk. ([e-Boks Terms of use](http://www.e-boks.dk/signup_terms.aspx?type=enduser)))
 
 ## Gettings started
 
@@ -37,7 +38,7 @@ You should note that your credentials are securely stored in the OS X keychain, 
 
 ## Features
 
-- Syncs all e-Boks PDF documents to a folder of your choice. E.g. your Dropbox folder.
+- Syncs all e-Boks documents to a folder of your choice. E.g. your Dropbox folder.
 - Support for multiple accounts.
 - Secure storage of credentials using the OS X keychain.
 - Automatic start.
