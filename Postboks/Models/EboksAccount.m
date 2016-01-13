@@ -10,7 +10,8 @@
 }
 
 - (NSString *)maskedUserId {
-	return [NSString stringWithFormat:@"%@-xxxx", [self.userId substringToIndex:6]];
+  NSRange dateRange = NSMakeRange(self.userId.length - 4, 4);
+  return [self.userId stringByReplacingCharactersInRange:dateRange withString:@"-xxxx"];
 }
 
 - (NSString *)nationality {
