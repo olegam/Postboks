@@ -49,5 +49,5 @@
 "move-files-question" = "Move files?";
 "move-files-question-with-paths" = "Do you want me to move files from %@ to %@?";
 
-"nationality-denmark" = "Denmark";
-"nationality-sweden" = "Sweden";
+"country-denmark" = "Denmark";
+"country-sweden" = "Sweden";

@@ -207,8 +207,8 @@
   if(!_nationalityPopupButton) {
     _nationalityPopupButton = [NSPopUpButton new];
     [_nationalityPopupButton addItemsWithTitles:@[
-      NSLocalizedString(@"nationality-denmark", @"Denmark"),
-      NSLocalizedString(@"nationality-sweden", @"Sweden")
+      NSLocalizedString(@"country-denmark", @"Denmark"),
+      NSLocalizedString(@"country-sweden", @"Sweden")
     ]];
   }
   

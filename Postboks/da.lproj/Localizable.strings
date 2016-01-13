@@ -49,5 +49,5 @@
 "move-files-question" = "Flyt filer?";
 "move-files-question-with-paths" = "Skal jeg flytte filer og mapper i %@ til %@?";
 
-"nationality-denmark" = "Danmark";
-"nationality-sweden" = "Sverige";
+"country-denmark" = "Danmark";
+"country-sweden" = "Sverige";
