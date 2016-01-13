@@ -14,6 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5012840D1C46DBF800CD2B2D /* sv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sv; path = sv.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		9B6F7E3B19A8D8C000409378 /* PostboksHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostboksHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6F7E3E19A8D8C000409378 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9B6F7E4119A8D8C000409378 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -151,6 +152,7 @@
 				en,
 				Base,
 				da,
+				sv,
 			);
 			mainGroup = 9B6F7E3219A8D8C000409378;
 			productRefGroup = 9B6F7E3C19A8D8C000409378 /* Products */;
@@ -191,6 +193,7 @@
 			children = (
 				9B6F7E8619A8E25000409378 /* en */,
 				9B70BF2119CB9735005556C3 /* da */,
+				5012840D1C46DBF800CD2B2D /* sv */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

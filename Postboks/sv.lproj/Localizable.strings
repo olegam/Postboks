@@ -1,0 +1,53 @@
+
+
+// Statusbar
+"failed-retry-in" = "Misslyckades. Försöker igen om %@";
+"syncs-every" = "Synkroniserar var %@";
+"next-sync-in" = "Nästa synkronisering om %@";
+"no-internet" = "Ingen Internetanslutning";
+"status-syncing" = "Synkroniserar...";
+"sync-now" = "Synkronisera nu";
+"open-documents-folder" = "Öppna dokumentmapp";
+"preferences-open" = "Inställningar...";
+"quit" = "Avsluta";
+
+"preferences-title" = "Inställningar";
+"eboks-help" = "Postboks behöver samma login-information som eBoks mobil-app. Logga in på e-boks.se med ditt BankID och gå till dina inställningar för att hitta din mobila aktiveringskod och välja ett lösenord.";
+"account-header" = "Konto";
+"cpr-legend" = "Personnummer:";
+"password-legend" = "Lösenord:";
+"activation-code-legend" = "Aktiveringskod:";
+"country-legend" = "Land:";
+"cancel" = "Avsluta";
+"save" = "Spara";
+"copyright-information" = "Copyright (c) 2014 Ole Gammelgaard Poulsen";
+"download-folder-legend" = "Nerladdningsmapp";
+"change-folder-button" = "Ändra";
+"version-format" = "Version %@ (%@)";
+"start-automatically" = "Starta Postboks automatiskt";
+"beta-expired" = "Betan har löpt ut.";
+"error-title" = "Ett fel uppstod";
+"OK" = "OK";
+"yes" = "Ja";
+"no" = "Nej";
+
+"automatic-launch-activate-error" = "Kunde inte aktivera automatisk start.";
+"automatic-launch-deactivate-launch" = "Kunde inte avaktivera automatisk start.";
+"general-tab" = "Generellt";
+"accounts-tab" = "Konton";
+"help-button" = "Hjälp";
+
+"account-sidebar-title" = "Konto";
+"launch-sidebar-title" = "Uppstart";
+"download-folder-sidebar-title" = "Nerladdningsmapp";
+"add-account-cell-title" = "Lägg till konto";
+"account-already-exists" = "Det finns redan ett konto med id %@";
+"no-accounts" = "Inga konton";
+"use-non-empty-directory-question" = "Vill du använda en mapp som inte är tom?";
+"already-contains-files-format" = "%@ innehåller redan filer eller mappar. Det rekommenderas att välja en tom mapp.";
+
+"move-files-question" = "Flytta filer?";
+"move-files-question-with-paths" = "Vill du att jag ska flytta filer från %@ till %@?";
+
+"nationality-denmark" = "Danmark";
+"nationality-sweden" = "Sverige";
