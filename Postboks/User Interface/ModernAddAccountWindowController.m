@@ -27,6 +27,7 @@
 @property(nonatomic, strong) CenteredTextField *userIdTextField;
 @property(nonatomic, strong) CenteredTextField *passwordTextField;
 @property(nonatomic, strong) CenteredTextField *activationCodeTextField;
+@property(nonatomic, strong) NSPopUpButton *nationalityPopupButton;
 @end
 
 @implementation ModernAddAccountWindowController {
@@ -54,18 +55,23 @@
 			NSLocalizedString(@"cpr-legend", @"Social security #:") : @34,
 			NSLocalizedString(@"password-legend", @"Password:") : @91,
 			NSLocalizedString(@"activation-code-legend", @"Activation code:") : @148,
+			NSLocalizedString(@"country-legend", @"Country:") : @208,
 	}];
 
-	self.cellContainerView = [[CellContainerView alloc] initWithNumberOfContainers:3];
+	self.cellContainerView = [[CellContainerView alloc] initWithNumberOfContainers:4];
 	[self.basePreferencesView.contentView addSubview:self.cellContainerView];
 
-	NSView *cprContainer = self.cellContainerView.containerViews[0];
-	NSView *passwordContainer = self.cellContainerView.containerViews[1];
-	NSView *activationCodeContainer = self.cellContainerView.containerViews[2];
+	BackgroundColorView *cprContainer = self.cellContainerView.containerViews[0];
+	BackgroundColorView *passwordContainer = self.cellContainerView.containerViews[1];
+	BackgroundColorView *activationCodeContainer = self.cellContainerView.containerViews[2];
+  BackgroundColorView *nationalityContainer = self.cellContainerView.containerViews[3];
+  
+  nationalityContainer.backgroundColor = [NSColor clearColor];
+  
 	[self installTextField:self.userIdTextField inContainer:cprContainer];
 	[self installTextField:self.passwordTextField inContainer:passwordContainer];
 	[self installTextField:self.activationCodeTextField inContainer:activationCodeContainer];
-
+  [self installTextField:self.nationalityPopupButton inContainer:nationalityContainer];
 
 	[self.basePreferencesView addSubview:self.cancelButton];
 	[self.basePreferencesView addSubview:self.saveButton];
@@ -114,6 +120,7 @@
 	account.userId = self.userIdTextField.string;
 	account.password = self.passwordTextField.string;
 	account.activationCode = self.activationCodeTextField.string;
+  account.nationality = [self selectedNationality];
 
 	NSString *errorMessage = nil;
 	if (account.password.length == 0) {
@@ -194,6 +201,22 @@
 		_activationCodeTextField.continuous = YES;
 	}
 	return _activationCodeTextField;
+}
+
+- (NSPopUpButton *)nationalityPopupButton {
+  if(!_nationalityPopupButton) {
+    _nationalityPopupButton = [NSPopUpButton new];
+    [_nationalityPopupButton addItemsWithTitles:@[
+      NSLocalizedString(@"nationality-denmark", @"Denmark"),
+      NSLocalizedString(@"nationality-sweden", @"Sweden")
+    ]];
+  }
+  
+  return _nationalityPopupButton;
+}
+
+- (NSString *)selectedNationality {
+  return self.nationalityPopupButton.indexOfSelectedItem == 1 ? @"SE" : @"DK";
 }
 
 @end

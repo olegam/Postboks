@@ -17,6 +17,7 @@
 "cpr-legend" = "CPR nr.:";
 "password-legend" = "Kodeord:";
 "activation-code-legend" = "Aktiveringskode:";
+"country-legend" = "Land:";
 "cancel" = "Annuller";
 "save" = "Gem";
 "copyright-information" = "Copyright (c) 2014 Ole Gammelgaard Poulsen";
@@ -48,3 +49,5 @@
 "move-files-question" = "Flyt filer?";
 "move-files-question-with-paths" = "Skal jeg flytte filer og mapper i %@ til %@?";
 
+"nationality-denmark" = "Danmark";
+"nationality-sweden" = "Sverige";
