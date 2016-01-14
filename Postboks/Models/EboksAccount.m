@@ -5,6 +5,9 @@
 
 #import "EboksAccount.h"
 
+NSString * const EboksNationalityDenmark = @"DK";
+NSString * const EboksNationalitySweden = @"SE";
+
 @implementation EboksAccount {
 
 }
@@ -15,7 +18,7 @@
 }
 
 - (NSString *)nationality {
-  return _nationality ? [_nationality copy] : @"DK";
+  return _nationality ? [_nationality copy] : EboksNationalityDenmark;
 }
 
 @end

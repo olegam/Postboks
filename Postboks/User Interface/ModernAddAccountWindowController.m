@@ -216,7 +216,8 @@
 }
 
 - (NSString *)selectedNationality {
-  return self.nationalityPopupButton.indexOfSelectedItem == 1 ? @"SE" : @"DK";
+  return self.nationalityPopupButton.indexOfSelectedItem == 1
+    ? EboksNationalitySweden : EboksNationalityDenmark;
 }
 
 @end

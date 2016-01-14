@@ -5,6 +5,9 @@
 
 #import <Foundation/Foundation.h>
 
+// Supported nationalities
+extern NSString * const EboksNationalityDenmark;
+extern NSString * const EboksNationalitySweden;
 
 @interface EboksAccount : NSObject
 

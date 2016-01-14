@@ -58,7 +58,7 @@
 }
 
 + (NSURL *)baseURLForNationality:(NSString *)nationality {
-  if ([nationality isEqualToString:@"SE"]) {
+  if ([nationality isEqualToString:EboksNationalitySweden]) {
     return [NSURL URLWithString:@"https://rest.e-boks.dk/mobile/1/xml.svc/sv-se"];
   }
 
