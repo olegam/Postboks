@@ -43,11 +43,13 @@ You should note that your credentials are securely stored in the OS X keychain, 
 - Secure storage of credentials using the OS X keychain.
 - Automatic start.
 - Sign in using the e-Boks mobile app credentials.
-- Danish and English localization.
+- Danish and Swedish e-Boks accounts are supported.
+- Danish, Swedish and English localization.
 
 ## Roadmap
 - Support for authorization to multiple inboxes including company inboxes.
 - Improve icon and graphical appearance.
+- Add support for Norwegian accounts. Anyone up for it?
 
 ## Contributing
 
