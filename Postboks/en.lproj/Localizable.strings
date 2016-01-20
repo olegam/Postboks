@@ -17,6 +17,7 @@
 "cpr-legend" = "Social security #:";
 "password-legend" = "Password:";
 "activation-code-legend" = "Activation code:";
+"country-legend" = "Country:";
 "cancel" = "Cancel";
 "save" = "Save";
 "copyright-information" = "Copyright (c) 2014 Ole Gammelgaard Poulsen";
@@ -48,3 +49,5 @@
 "move-files-question" = "Move files?";
 "move-files-question-with-paths" = "Do you want me to move files from %@ to %@?";
 
+"country-denmark" = "Denmark";
+"country-sweden" = "Sweden";
