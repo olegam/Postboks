@@ -30,6 +30,7 @@
 "OK" = "OK";
 "yes" = "Yes";
 "no" = "No";
+"invalid-login-credentials" = "The credentials you entered could not be verified.";
 
 "automatic-launch-activate-error" = "Could not activate automatic launch.";
 "automatic-launch-deactivate-launch" = "Could not deactivate automatic launch.";

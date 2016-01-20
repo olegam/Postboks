@@ -30,6 +30,7 @@
 "OK" = "OK";
 "yes" = "Ja";
 "no" = "Nej";
+"invalid-login-credentials" = "The credentials you entered could not be verified.";
 
 "automatic-launch-activate-error" = "Kunde inte aktivera automatisk start.";
 "automatic-launch-deactivate-launch" = "Kunde inte avaktivera automatisk start.";

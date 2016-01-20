@@ -144,9 +144,14 @@
 	[[[APIClient sharedInstanceForAccount:account] getSessionForAccount:account] subscribeNext:^(EboksSession *session) {
 		[[SettingsManager sharedInstance] saveAccount:account];
 		[self.dismissSignal sendNext:nil];
-	}                                                                  error:^(NSError *error) {
+	} error:^(NSError *error) {
+		NSString *errorMessage = [error localizedDescription];
+		if (error.code == -1011) {
+			errorMessage = NSLocalizedString(@"invalid-login-credentials", @"The credentials you entered could not be verified.");
+		}
+
 		NSAlert *alert = [[NSAlert alloc] init];
-		[alert setMessageText:[error localizedDescription]];
+		[alert setMessageText:errorMessage];
 		[alert runModal];
 	}];
 }

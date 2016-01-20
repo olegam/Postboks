@@ -30,6 +30,7 @@
 "OK" = "OK";
 "yes" = "Ja";
 "no" = "Nej";
+"invalid-login-credentials" = "De indtastede login oplysninger kunne ikke verificeres.";
 
 "automatic-launch-activate-error" = "Automatisk start af app'en kunne ikke aktiveres";
 "automatic-launch-deactivate-launch" = "Automatisk start af app'en kunne ikke deaktiveres";
