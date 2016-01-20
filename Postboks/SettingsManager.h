@@ -16,6 +16,7 @@ static NSString *const PostboksDocumentBaseBookmarkKey = @"documentBaseBookmark"
 @property(nonatomic, assign) NSTimeInterval downloadInterval;
 @property(nonatomic, strong) NSDate *lastCompletedSyncDate;
 @property(nonatomic, assign) BOOL startOnLaunch;
+@property(nonatomic, assign) BOOL sortBySender;
 
 + (SettingsManager *)sharedInstance;
 

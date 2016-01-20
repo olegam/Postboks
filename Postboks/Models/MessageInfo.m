@@ -31,14 +31,25 @@
 }
 
 - (NSString *)fileName {
-	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@).%@", self.name, self.senderName, self.fileFormat];
+    NSString *unEscapedName;
+    
+    if([SettingsManager sharedInstance].sortBySender) {
+        unEscapedName = [NSString stringWithFormat:@"%@.%@", self.name, self.fileFormat];
+    } else {
+        unEscapedName = [NSString stringWithFormat:@"%@ (%@).%@", self.name, self.senderName, self.fileFormat];
+    }
+	
 	NSString *safeName = [MessageInfo sanitizeFileNameString:unEscapedName];
 	return safeName;
 }
 
 - (NSString *)folderPathrelativeToBasePath {
 	NSString *dateString = [[MessageInfo simpleDateFormatter] stringFromDate:self.receivedDate];
-	return dateString;
+    
+    if([SettingsManager sharedInstance].sortBySender) {
+        return [dateString stringByAppendingPathComponent:self.senderName];
+    }
+    return dateString;
 }
 
 - (NSString *)folderPath {

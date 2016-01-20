@@ -22,6 +22,7 @@
 @property(nonatomic, strong) CellContainerView *cellContainerView;
 
 @property (nonatomic, strong) NSButton *startAtLaunchSwitchButton;
+@property (nonatomic, strong) NSButton *sortBySenderSwitchButton;
 @property (nonatomic, strong) NSTextField *downloadsFolderValueLabel;
 @property(nonatomic, strong) FlatButton *changeDownloadFolderButton;
 
@@ -41,10 +42,10 @@
 
 		[self.basePreferencesView.sidebarView setTitlesAtPositions:@{
 				NSLocalizedString(@"launch-sidebar-title", @"Launch") : @34,
-				NSLocalizedString(@"download-folder-sidebar-title", @"Download folder") : @91,
+                NSLocalizedString(@"download-folder-sidebar-title", @"Download folder") : @91,
 		}];
 
-		self.cellContainerView = [[CellContainerView alloc] initWithNumberOfContainers:2];
+		self.cellContainerView = [[CellContainerView alloc] initWithNumberOfContainers:3];
 		[self.basePreferencesView.contentView addSubview:self.cellContainerView];
 
 		[self.cellContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -60,6 +61,7 @@
 			make.centerY.equalTo(launchContainerView);
 			make.height.equalTo(@30);
 		}];
+        
 
 		NSView *folderContainerView = self.cellContainerView.containerViews[1];
 		[folderContainerView addSubview:self.downloadsFolderValueLabel];
@@ -91,7 +93,15 @@
 		[self updateFolderLabel];
 		SyncScheduler *syncScheduler = [SyncScheduler sharedInstance];
 		RAC(self.changeDownloadFolderButton, enabled) = [RACObserve(syncScheduler, syncing) not];
-
+        
+        NSView *sortBySenderContainerView = self.cellContainerView.containerViews[2];
+        [sortBySenderContainerView addSubview:self.sortBySenderSwitchButton];
+        [self.sortBySenderSwitchButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(sortBySenderContainerView).offset(15);
+            make.right.equalTo(sortBySenderContainerView).offset(-15);
+            make.centerY.equalTo(sortBySenderContainerView);
+            make.height.equalTo(@25);
+        }];
 	}
 	return self;
 }
@@ -101,6 +111,12 @@
 	NSButton *button = startAtLaunchButtonClicked;
 	BOOL enabled = (BOOL) button.state;
 	[SettingsManager sharedInstance].startOnLaunch = enabled;
+}
+
+- (void)sortBySenderButtonClicked:(id)sortBySenderButtonClicked {
+    NSButton *button = sortBySenderButtonClicked;
+    BOOL enabled = (BOOL) button.state;
+    [SettingsManager sharedInstance].sortBySender = enabled;
 }
 
 - (void)changeFolderPressed:(id)changeFolderPressed {
@@ -185,6 +201,19 @@
 	}
 
 	return _startAtLaunchSwitchButton;
+}
+
+- (NSButton *)sortBySenderSwitchButton {
+    if (!_sortBySenderSwitchButton) {
+        _sortBySenderSwitchButton = [NSButton new];
+        _sortBySenderSwitchButton.title = NSLocalizedString(@"sort-by-sender", @"Include sender name in subfolders");
+        [_sortBySenderSwitchButton setFont:[NSFont fontWithName:@"HelveticaNeue" size:14]];
+        [_sortBySenderSwitchButton setButtonType:NSSwitchButton];
+        [_sortBySenderSwitchButton setAction:@selector(sortBySenderButtonClicked:)];
+        [_sortBySenderSwitchButton setTarget:self];
+    }
+    
+    return _sortBySenderSwitchButton;
 }
 
 - (NSTextField *)downloadsFolderValueLabel {
