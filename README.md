@@ -31,11 +31,6 @@ Click the "Open documents folder" to see how all your documents are nicely organ
 You should note that your credentials are securely stored in the OS X keychain, but all your documents are stored as files on the disk. So you may want to enable disk encryption on your mac to make sure sensitive documents are encrypted.
 
 
-## Limitiations
-
-- Error handling is limited.
-- The status bar icon does not look right in OS X dark mode.
-
 ## Features
 
 - Syncs all e-Boks documents to a folder of your choice. E.g. your Dropbox folder.
