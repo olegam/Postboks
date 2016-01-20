@@ -30,7 +30,7 @@
 "OK" = "OK";
 "yes" = "Ja";
 "no" = "Nej";
-"invalid-login-credentials" = "Inloggningsuppgifterna är inte giltiga.";
+"invalid-login-credentials" = "Inloggningsuppgifterna kunde inte verifieras.";
 
 "automatic-launch-activate-error" = "Kunde inte aktivera automatisk start.";
 "automatic-launch-deactivate-launch" = "Kunde inte avaktivera automatisk start.";
