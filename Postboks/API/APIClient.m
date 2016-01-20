@@ -19,18 +19,61 @@
 #import <CocoaSecurity/CocoaSecurity.h>
 #import <Functional.m/F.h>
 
+@interface APIClient ()
+
+@property (nonatomic, copy) NSURL *baseURL;
+
+@end
+
 @implementation APIClient {
 
 }
 
-+ (APIClient *)sharedInstance {
-	static APIClient *sharedInstance = nil;
-	if (sharedInstance) return sharedInstance;
-	static dispatch_once_t pred;
-	dispatch_once(&pred, ^{
-		sharedInstance = [[APIClient alloc] init];
-	});
-	return sharedInstance;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL {
+  self = [super init];
+  if (!self) return nil;
+  
+  _baseURL = [baseURL copy];
+  
+  return self;
+}
+
++ (APIClient *)sharedInstanceForAccount:(EboksAccount *)account {
+  static NSMutableDictionary *sharedClients = nil;
+  
+  static dispatch_once_t pred;
+  dispatch_once(&pred, ^{
+    sharedClients = [NSMutableDictionary new];
+  });
+  
+  APIClient *client = sharedClients[account.nationality];
+  if (!client) {
+    NSURL *baseURL = [self baseURLForNationality:account.nationality];
+    client = [[APIClient alloc] initWithBaseURL:baseURL];
+
+    sharedClients[account.nationality] = client;
+  }
+
+  return client;
+}
+
++ (NSURL *)baseURLForNationality:(NSString *)nationality {
+  if ([nationality isEqualToString:EboksNationalitySweden]) {
+    return [NSURL URLWithString:@"https://rest.e-boks.dk/mobile/1/xml.svc/sv-se"];
+  }
+
+  return [NSURL URLWithString:@"https://rest.e-boks.dk/mobile/1/xml.svc/en-gb"];
+}
+
++ (NSData *)authBodyForAccount:(EboksAccount *)account {
+  NSString *bodyString = [NSString stringWithFormat:
+    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    "<Logon xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"urn:eboks:mobile:1.0.0\">"
+    "<App version=\"1.4.1\" os=\"iOS\" osVersion=\"9.0.0\" Device=\"iPhone\" />"
+    "<User identity=\"%@\" identityType=\"P\" nationality=\"%@\" pincode=\"%@\"/>"
+    "</Logon>", account.userId, account.nationality, account.password];
+  
+  return [bodyString dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (RACSignal *)getSessionForAccount:(EboksAccount *)account {
@@ -39,21 +82,14 @@
 	session.account = account;
 
 	NSString *dateString = [APIClient currentDateString];
-	NSString *input = [NSString stringWithFormat:@"%@:%@:P:%@:DK:%@:%@", account.activationCode, session.deviceId, account.userId, account.password, dateString];
+	NSString *input = [NSString stringWithFormat:@"%@:%@:P:%@:%@:%@:%@", account.activationCode, session.deviceId, account.userId, account.nationality, account.password, dateString];
 	NSString *challenge = [APIClient doubleHash:input];
-	NSURL *url = [NSURL URLWithString:@"https://rest.e-boks.dk/mobile/1/xml.svc/en-gb/session"];
+  NSURL *url = [self.baseURL URLByAppendingPathComponent:@"session"];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 	NSString *authHeader = [NSString stringWithFormat:@"logon deviceid=\"%@\",datetime=\"%@\",challenge=\"%@\"", session.deviceId, dateString, challenge];
 
 	[request setValue:authHeader forHTTPHeaderField:@"X-EBOKS-AUTHENTICATE"];
-	NSString *bodyString = [NSString stringWithFormat:
-		 @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-		  "<Logon xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"urn:eboks:mobile:1.0.0\">"
-		  "<App version=\"1.4.1\" os=\"iOS\" osVersion=\"9.0.0\" Device=\"iPhone\" />"
-		  "<User identity=\"%@\" identityType=\"P\" nationality=\"DK\" pincode=\"%@\"/>"
-		  "</Logon>", account.userId, account.password];
-	NSData *body = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
-	[request setHTTPBody:body];
+	[request setHTTPBody:[[self class] authBodyForAccount:account]];
 	[request setHTTPMethod:@"PUT"];
 	[request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
 	[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
@@ -86,7 +122,8 @@
 }
 
 - (RACSignal *)getFoldersWithSessionId:(EboksSession *)session {
-	NSString *urlString = [NSString stringWithFormat:@"https://rest.e-boks.dk/mobile/1/xml.svc/en-gb/%@/0/mail/folders", session.internalUserId];
+	NSString *urlString = [NSString stringWithFormat:@"%@/%@/0/mail/folders", self.baseURL.absoluteString, session.internalUserId];
+
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *foldersSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
 		NSArray *folderElements = [responseDocument.rootElement children];
@@ -99,8 +136,8 @@
 }
 
 - (RACSignal *)getFolderId:(NSString *)folderId session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take {
-	NSString *inboxPathFormat = @"https://rest.e-boks.dk/mobile/1/xml.svc/en-gb/%@/0/mail/folder/%@?skip=%ld&take=%ld&latest=false";
-	NSString *urlString = [NSString stringWithFormat:inboxPathFormat, session.internalUserId, folderId, skip, take];
+	NSString *urlFormat = @"%@/%@/0/mail/folder/%@?skip=%ld&take=%ld&latest=false";
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, folderId, skip, take];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *folderSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
 		NSArray *messageElements = [responseDocument.rootElement.children.firstObject children];
@@ -113,8 +150,8 @@
 }
 
 - (RACSignal *)getFileDataForMessageId:(NSString *)messageId session:(EboksSession *)session {
-	NSString *contentPathFormat = @"https://rest.e-boks.dk/mobile/1/xml.svc/en-gb/%@/0/mail/folder/0/message/%@/content";
-	NSString *urlString = [NSString stringWithFormat:contentPathFormat, session.internalUserId, messageId];
+	NSString *urlFormat = @"%@/%@/0/mail/folder/0/message/%@/content";
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, messageId];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:NO];
 
 	RACSignal *contentSignal = [requestSignal map:^id(id responseData) {

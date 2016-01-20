@@ -11,7 +11,8 @@
 
 
 @interface APIClient : NSObject
-+ (APIClient *)sharedInstance;
+
++ (APIClient *)sharedInstanceForAccount:(EboksAccount *)account;
 
 
 - (RACSignal *)getSessionForAccount:(EboksAccount *)account;

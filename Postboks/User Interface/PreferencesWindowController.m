@@ -33,8 +33,8 @@
 
 	self = [super initWithWindow:window];
 	if (self) {
-		TabButton *generalButton = [[TabButton alloc] initWithTitle:@"General" icon:[NSImage imageNamed:@"general_icon"]];
-		TabButton *accountsButton = [[TabButton alloc] initWithTitle:@"Accounts" icon:[NSImage imageNamed:@"accounts_icon"]];
+		TabButton *generalButton = [[TabButton alloc] initWithTitle:NSLocalizedString(@"general-tab", @"General") icon:[NSImage imageNamed:@"general_icon"]];
+		TabButton *accountsButton = [[TabButton alloc] initWithTitle:NSLocalizedString(@"accounts-tab", @"Accounts") icon:[NSImage imageNamed:@"accounts_icon"]];
 		self.tabBarView = [[TabBarView alloc] initWithButtons:@[generalButton, accountsButton]];
 
 		NSView *contentView = window.contentView;
