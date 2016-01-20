@@ -76,12 +76,14 @@ static const int MaxNotificationPathLength = 90;
 					NSString *filePath = [message fullFilePath];
 					if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
 					[self createFolder:[message folderPath]];
-					return [[[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
+					return [[[[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
 						[fileData writeToFile:filePath atomically:YES];
 						[newlyDownloadedMessages addObject:message];
 					}] doError:^(NSError *error) {
 						[failedToDownloadedMessages addObject:message];
-					}] mapReplace:message];
+					}] mapReplace:message] catch:^RACSignal *(NSError *error) {
+						return [RACSignal return:message];
+					}];
 				}];
 				return [RACSignal concat:downloadMessageSignal];
 			}];
