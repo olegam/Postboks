@@ -72,7 +72,7 @@ static const int MaxNotificationPathLength = 90;
 		NSArray *getFolderMessagesSignals = [allFolderIds map:^id(NSString *folderId) {
 			RACSignal *getFolderContentsSignal = [api getFolderId:folderId session:session skip:0 take:100000];
 			return [getFolderContentsSignal flattenMap:^RACStream *(NSArray *messages) {
-				NSArray *downloadMessageSignal = [messages map:^id(MessageInfo *message) {
+				NSArray *downloadMessageSignals = [messages map:^id(MessageInfo *message) {
 					NSString *filePath = [message fullFilePath];
 					if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
 					[self createFolder:[message folderPath]];
@@ -85,7 +85,7 @@ static const int MaxNotificationPathLength = 90;
 						return [RACSignal return:message];
 					}];
 				}];
-				return [RACSignal concat:downloadMessageSignal];
+				return [RACSignal concat:downloadMessageSignals];
 			}];
 		}];
 		return [RACSignal concat:getFolderMessagesSignals];

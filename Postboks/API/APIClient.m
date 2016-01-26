@@ -139,14 +139,35 @@
 	NSString *urlFormat = @"%@/%@/0/mail/folder/%@?skip=%ld&take=%ld&latest=false";
 	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, folderId, skip, take];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
-	RACSignal *folderSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
+	RACSignal *folderSignal = [requestSignal flattenMap:^RACStream *(ONOXMLDocument *responseDocument) {
 		NSArray *messageElements = [responseDocument.rootElement.children.firstObject children];
-		NSArray *messages = [messageElements map:^id(ONOXMLElement *element) {
-			return [MessageInfo messageFromXMLElement:element userId:session.account.userId];
+		NSMutableArray *mutableMessages = [NSMutableArray array];
+		NSArray *getMessageSignals = [messageElements map:^id(ONOXMLElement *element) {
+			MessageInfo *messageInfo = [MessageInfo messageFromXMLElement:element userId:session.account.userId];
+			// if there are attachments we need to make another request to get their ids
+			if (messageInfo.numAttachments == 0){
+				[mutableMessages addObject:messageInfo];
+				return [[RACSignal return:nil] ignoreValues];
+			}
+			return [[[self getMessageId:messageInfo.messageId folderId:folderId session:session] doNext:^(MessageInfo *fullMessage) {
+				[mutableMessages addObject:fullMessage];
+			}] ignoreValues];
 		}];
-		return messages;
+		return [[RACSignal concat:getMessageSignals] mapReplace:[mutableMessages copy]];
 	}];
 	return folderSignal;
+}
+
+- (RACSignal *)getMessageId:(NSString *)messageId folderId:(NSString *)folderId session:(EboksSession *)session {
+	NSString *urlFormat = @"%@/%@/0/mail/folder/%@/message/%@";
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, folderId, messageId];
+	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
+	RACSignal *messageSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
+		ONOXMLElement *messageElement = responseDocument.rootElement;
+		MessageInfo *message = [MessageInfo messageFromXMLElement:messageElement userId:session.account.userId];
+		return message;
+	}];
+	return messageSignal;
 }
 
 - (RACSignal *)getFileDataForMessageId:(NSString *)messageId session:(EboksSession *)session {

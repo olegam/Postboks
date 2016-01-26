@@ -7,7 +7,9 @@
 #import "MessageInfo.h"
 #import "AppDelegate.h"
 #import "DocumentDownloader.h"
+#import "AttachmentInfo.h"
 #import <ISO8601DateFormatter/ISO8601DateFormatter.h>
+#import <Functional.m/NSArray+F.h>
 
 @implementation MessageInfo {
 
@@ -26,7 +28,16 @@
 	message.receivedDate = [[MessageInfo dateParsingFormatter] dateFromString:dateString];
 	message.userId = userId;
 	message.fileFormat = [[element valueForAttribute:@"format"] lowercaseString];
-	message.numAttachments = (NSUInteger) [[element valueForAttribute:@"attachmentsCount"] integerValue];
+
+	NSArray *attachmentElements = [[element firstChildWithTag:@"Attachements"] childrenWithTag:@"AttachmentInfo"];
+	if (attachmentElements.count == 0) {
+		message.numAttachments = (NSUInteger) [[element valueForAttribute:@"attachmentsCount"] integerValue];
+	} else {
+		message.attachments = [attachmentElements map:^id(ONOXMLElement *attachmentElement) {
+			return [AttachmentInfo attachmentFromXMLElement:attachmentElement];
+		}];
+		message.numAttachments = message.attachments.count;
+	}
 
 	return message;
 }
