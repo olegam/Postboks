@@ -26,7 +26,8 @@
 	message.receivedDate = [[MessageInfo dateParsingFormatter] dateFromString:dateString];
 	message.userId = userId;
 	message.fileFormat = [[element valueForAttribute:@"format"] lowercaseString];
-	
+	message.numAttachments = (NSUInteger) [[element valueForAttribute:@"attachmentsCount"] integerValue];
+
 	return message;
 }
 

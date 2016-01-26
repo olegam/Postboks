@@ -19,6 +19,8 @@
 @property(nonatomic, strong) NSString *userId;
 @property(nonatomic, strong) NSString *fileFormat;
 
+@property(nonatomic, assign) NSUInteger numAttachments;
+
 + (instancetype)messageFromXMLElement:(ONOXMLElement *)element userId:(NSString *)userId;
 
 - (NSString *)fileName;
