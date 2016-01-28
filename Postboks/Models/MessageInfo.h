@@ -36,4 +36,6 @@
 - (NSString *)fullFilePath;
 
 - (NSString *)fullFilePathForAttachment:(AttachmentInfo *)attachment;
+
+- (NSString *)filePathRelativeToBasePathForAttachment:(AttachmentInfo *)attachment;
 @end

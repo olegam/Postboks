@@ -68,12 +68,19 @@
 	return [[self folderPath] stringByAppendingPathComponent:[self fileName]];
 }
 
-
-
 - (NSString *)fullFilePathForAttachment:(AttachmentInfo *)attachment {
+	NSString *safeName = [self fileNameForAttachment:attachment];
+	return [[self folderPath] stringByAppendingPathComponent:safeName];
+}
+
+- (NSString *)filePathRelativeToBasePathForAttachment:(AttachmentInfo *)attachment {
+	return [[self folderPathrelativeToBasePath] stringByAppendingPathComponent:[self fileNameForAttachment:attachment]];
+}
+
+- (NSString *)fileNameForAttachment:(AttachmentInfo *)attachment {
 	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@) - %@.%@", self.name, self.senderName, attachment.name, attachment.fileFormat];
 	NSString *safeName = [MessageInfo sanitizeFileNameString:unEscapedName];
-	return [[self folderPath] stringByAppendingPathComponent:safeName];
+	return safeName;
 }
 
 #pragma mark - Helpers

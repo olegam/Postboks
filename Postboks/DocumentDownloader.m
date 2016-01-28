@@ -17,8 +17,8 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 
-static const int MaxNotificationDocuments = 7;
-static const int MaxNotificationPathLength = 90;
+static const int MaxNotificationDocuments = 6;
+static const int MaxNotificationPathLength = 110;
 
 
 @interface DocumentDownloader ()
@@ -135,9 +135,13 @@ static const int MaxNotificationPathLength = 90;
 	notification.actionButtonTitle = @"Open";
 	notification.hasActionButton = YES;
 	notification.soundName = NSUserNotificationDefaultSoundName;
-	NSArray *filePaths = [messages map:^id(MessageInfo *message) {
-		return [message filePathRelativeToBasePath];
-	}];
+	NSArray *filePaths = [messages reduce:^id(NSArray *memo, MessageInfo *message) {
+		NSArray *paths = [memo arrayByAddingObject:[message filePathRelativeToBasePath]];
+		NSArray *attachmentPaths = [message.attachments map:^id(AttachmentInfo *attachment) {
+			return [message filePathRelativeToBasePathForAttachment:attachment];
+		}];
+		return [paths arrayByAddingObjectsFromArray:attachmentPaths];
+	} withInitialMemo:@[]];
 
 	NSArray *folderPaths = [filePaths map:^id(NSString *path) {
 		NSArray *pathComponents = [path pathComponents];
@@ -152,6 +156,7 @@ static const int MaxNotificationPathLength = 90;
 			return path.length < MaxNotificationPathLength;
 		}];
 	}
+	
 	if (filePaths.count > MaxNotificationDocuments) {
 		filePaths = [filePaths arrayUntilIndex:MaxNotificationDocuments - 1];
 	}
