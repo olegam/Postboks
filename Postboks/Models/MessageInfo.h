@@ -6,6 +6,8 @@
 #import <Foundation/Foundation.h>
 #import <Ono/ONOXMLDocument.h>
 
+@class AttachmentInfo;
+
 @interface MessageInfo : NSObject
 
 
@@ -32,4 +34,6 @@
 - (NSString *)filePathRelativeToBasePath;
 
 - (NSString *)fullFilePath;
+
+- (NSString *)fullFilePathForAttachment:(AttachmentInfo *)attachment;
 @end

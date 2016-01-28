@@ -13,6 +13,7 @@
 #import "NSArray+F.h"
 #import "SettingsManager.h"
 #import "EboksFolderInfo.h"
+#import "AttachmentInfo.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 
@@ -76,12 +77,23 @@ static const int MaxNotificationPathLength = 90;
 					NSString *filePath = [message fullFilePath];
 					if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
 					[self createFolder:[message folderPath]];
-					return [[[[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
+
+					RACSignal *downloadMainFileSignal = [[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
 						[fileData writeToFile:filePath atomically:YES];
 						[newlyDownloadedMessages addObject:message];
-					}] doError:^(NSError *error) {
+					}] ignoreValues];
+
+					RACSignal *downloadAttachmentsSignal = [RACSignal concat:[message.attachments map:^id(AttachmentInfo *attachmentInfo) {
+						NSString *attachmentFilePath = [message fullFilePathForAttachment:attachmentInfo];
+						if ([fm fileExistsAtPath:attachmentFilePath]) return [RACSignal empty];
+						return [[[api getFileDataForMessageId:attachmentInfo.attachmentId session:session] doNext:^(NSData *fileData) {
+							[fileData writeToFile:attachmentFilePath atomically:YES];
+						}] ignoreValues];
+					}]];
+
+					return [[[RACSignal concat:@[downloadMainFileSignal, downloadAttachmentsSignal]] doError:^(NSError *error) {
 						[failedToDownloadedMessages addObject:message];
-					}] mapReplace:message] catch:^RACSignal *(NSError *error) {
+					}] catch:^RACSignal *(NSError *error) {
 						return [RACSignal return:message];
 					}];
 				}];

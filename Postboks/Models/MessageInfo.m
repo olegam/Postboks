@@ -32,6 +32,7 @@
 	NSArray *attachmentElements = [[element firstChildWithTag:@"Attachements"] childrenWithTag:@"AttachmentInfo"];
 	if (attachmentElements.count == 0) {
 		message.numAttachments = (NSUInteger) [[element valueForAttribute:@"attachmentsCount"] integerValue];
+		message.attachments = @[];
 	} else {
 		message.attachments = [attachmentElements map:^id(ONOXMLElement *attachmentElement) {
 			return [AttachmentInfo attachmentFromXMLElement:attachmentElement];
@@ -67,6 +68,13 @@
 	return [[self folderPath] stringByAppendingPathComponent:[self fileName]];
 }
 
+
+
+- (NSString *)fullFilePathForAttachment:(AttachmentInfo *)attachment {
+	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@) - %@.%@", self.name, self.senderName, attachment.name, attachment.fileFormat];
+	NSString *safeName = [MessageInfo sanitizeFileNameString:unEscapedName];
+	return [[self folderPath] stringByAppendingPathComponent:safeName];
+}
 
 #pragma mark - Helpers
 

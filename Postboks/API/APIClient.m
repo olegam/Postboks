@@ -153,7 +153,10 @@
 				[mutableMessages addObject:fullMessage];
 			}] ignoreValues];
 		}];
-		return [[RACSignal concat:getMessageSignals] mapReplace:[mutableMessages copy]];
+		return [[[[[RACSignal concat:getMessageSignals] materialize] map:^id(RACEvent *event) {
+			NSAssert(event.eventType == RACEventTypeCompleted, @"Event should be completed");
+			return [RACEvent eventWithValue:[mutableMessages copy]];
+		}] dematerialize] take:1];
 	}];
 	return folderSignal;
 }
