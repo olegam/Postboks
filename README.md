@@ -45,6 +45,7 @@ You should note that your credentials are securely stored in the OS X keychain, 
 - Support for authorization to multiple inboxes including company inboxes.
 - Improve icon and graphical appearance.
 - Add support for Norwegian accounts. Anyone up for it?
+- Make a nice looking marketing site.
 
 ## Contributing
 
