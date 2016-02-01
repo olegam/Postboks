@@ -7,7 +7,9 @@
 #import "MessageInfo.h"
 #import "AppDelegate.h"
 #import "DocumentDownloader.h"
+#import "AttachmentInfo.h"
 #import <ISO8601DateFormatter/ISO8601DateFormatter.h>
+#import <Functional.m/NSArray+F.h>
 
 @implementation MessageInfo {
 
@@ -26,7 +28,18 @@
 	message.receivedDate = [[MessageInfo dateParsingFormatter] dateFromString:dateString];
 	message.userId = userId;
 	message.fileFormat = [[element valueForAttribute:@"format"] lowercaseString];
-	
+
+	NSArray *attachmentElements = [[element firstChildWithTag:@"Attachements"] childrenWithTag:@"AttachmentInfo"];
+	if (attachmentElements.count == 0) {
+		message.numAttachments = (NSUInteger) [[element valueForAttribute:@"attachmentsCount"] integerValue];
+		message.attachments = @[];
+	} else {
+		message.attachments = [attachmentElements map:^id(ONOXMLElement *attachmentElement) {
+			return [AttachmentInfo attachmentFromXMLElement:attachmentElement];
+		}];
+		message.numAttachments = message.attachments.count;
+	}
+
 	return message;
 }
 
@@ -55,6 +68,20 @@
 	return [[self folderPath] stringByAppendingPathComponent:[self fileName]];
 }
 
+- (NSString *)fullFilePathForAttachment:(AttachmentInfo *)attachment {
+	NSString *safeName = [self fileNameForAttachment:attachment];
+	return [[self folderPath] stringByAppendingPathComponent:safeName];
+}
+
+- (NSString *)filePathRelativeToBasePathForAttachment:(AttachmentInfo *)attachment {
+	return [[self folderPathrelativeToBasePath] stringByAppendingPathComponent:[self fileNameForAttachment:attachment]];
+}
+
+- (NSString *)fileNameForAttachment:(AttachmentInfo *)attachment {
+	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@) - %@.%@", self.name, self.senderName, attachment.name, attachment.fileFormat];
+	NSString *safeName = [MessageInfo sanitizeFileNameString:unEscapedName];
+	return safeName;
+}
 
 #pragma mark - Helpers
 

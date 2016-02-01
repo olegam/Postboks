@@ -6,6 +6,8 @@
 #import <Foundation/Foundation.h>
 #import <Ono/ONOXMLDocument.h>
 
+@class AttachmentInfo;
+
 @interface MessageInfo : NSObject
 
 
@@ -19,6 +21,10 @@
 @property(nonatomic, strong) NSString *userId;
 @property(nonatomic, strong) NSString *fileFormat;
 
+@property(nonatomic, assign) NSUInteger numAttachments;
+
+@property(nonatomic, strong) NSArray *attachments;
+
 + (instancetype)messageFromXMLElement:(ONOXMLElement *)element userId:(NSString *)userId;
 
 - (NSString *)fileName;
@@ -28,4 +34,8 @@
 - (NSString *)filePathRelativeToBasePath;
 
 - (NSString *)fullFilePath;
+
+- (NSString *)fullFilePathForAttachment:(AttachmentInfo *)attachment;
+
+- (NSString *)filePathRelativeToBasePathForAttachment:(AttachmentInfo *)attachment;
 @end

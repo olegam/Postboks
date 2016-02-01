@@ -15,6 +15,7 @@
 		85C5A21DBC32CD88879A0168 /* NSTableView+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AF099EEC058972882B76 /* NSTableView+RACAdditions.m */; };
 		85C5A2D9B9DEBCCC3AA620CD /* menubar_icon_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A08417AC78C1CB68C3F8 /* menubar_icon_selected.png */; };
 		85C5A30BB18379CDBD14DC60 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AE56A55AF1E51753253A /* SettingsManager.m */; };
+		85C5A33D0F6976EDB9B13D89 /* AttachmentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A076D89C8E02A48AD026 /* AttachmentInfo.m */; };
 		85C5A36FC9196DDEF0958030 /* EboksFolderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AA5D9940D234FA1C5209 /* EboksFolderInfo.m */; };
 		85C5A47A351BFAC02AE7AA1B /* EboksSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A98F6919EF3F5FA4D0C3 /* EboksSession.m */; };
 		85C5A47A92FA32548B86D880 /* account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5AC947FDA6F7EAA7532D4 /* account_icon@2x.png */; };
@@ -109,8 +110,10 @@
 		85C5A0247E896808AFD92294 /* NSString+EboksAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EboksAdditions.h"; sourceTree = "<group>"; };
 		85C5A03151FC9AF0D1B6FFAF /* StyledWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledWindow.h; sourceTree = "<group>"; };
 		85C5A04C1B8AED33F44C1BB1 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
+		85C5A076D89C8E02A48AD026 /* AttachmentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentInfo.m; sourceTree = "<group>"; };
 		85C5A08417AC78C1CB68C3F8 /* menubar_icon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_icon_selected.png; sourceTree = "<group>"; };
 		85C5A0959F892379B2001182 /* NSComboBox+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSComboBox+RACAdditions.h"; sourceTree = "<group>"; };
+		85C5A0BEF95EE5E84D35E649 /* AttachmentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentInfo.h; sourceTree = "<group>"; };
 		85C5A109B9464C65AA7AA965 /* EboksAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EboksAccount.h; sourceTree = "<group>"; };
 		85C5A1180FBC36C3DC0B31B2 /* StyledWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledWindow.m; sourceTree = "<group>"; };
 		85C5A175F206F0E9A6B953B6 /* EboksSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EboksSession.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				85C5A98F6919EF3F5FA4D0C3 /* EboksSession.m */,
 				85C5AA5D9940D234FA1C5209 /* EboksFolderInfo.m */,
 				85C5A32761E9BB657CBEF938 /* EboksFolderInfo.h */,
+				85C5A076D89C8E02A48AD026 /* AttachmentInfo.m */,
+				85C5A0BEF95EE5E84D35E649 /* AttachmentInfo.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -611,6 +616,7 @@
 				85C5AD940134D8DED8A76E89 /* TabBarView.m in Sources */,
 				85C5A5AAE84D1BFEB3D788FA /* StyledWindow.m in Sources */,
 				85C5A54691FCD890DA7052EC /* PreferencesWindowController.m in Sources */,
+				85C5A33D0F6976EDB9B13D89 /* AttachmentInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,7 +673,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -694,7 +700,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -728,7 +734,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -771,7 +777,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -797,7 +803,7 @@
 				CODE_SIGN_ENTITLEMENTS = Postboks/Postboks.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -821,7 +827,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

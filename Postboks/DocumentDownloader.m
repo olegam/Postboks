@@ -13,11 +13,12 @@
 #import "NSArray+F.h"
 #import "SettingsManager.h"
 #import "EboksFolderInfo.h"
+#import "AttachmentInfo.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 
-static const int MaxNotificationDocuments = 7;
-static const int MaxNotificationPathLength = 90;
+static const int MaxNotificationDocuments = 6;
+static const int MaxNotificationPathLength = 110;
 
 
 @interface DocumentDownloader ()
@@ -72,20 +73,31 @@ static const int MaxNotificationPathLength = 90;
 		NSArray *getFolderMessagesSignals = [allFolderIds map:^id(NSString *folderId) {
 			RACSignal *getFolderContentsSignal = [api getFolderId:folderId session:session skip:0 take:100000];
 			return [getFolderContentsSignal flattenMap:^RACStream *(NSArray *messages) {
-				NSArray *downloadMessageSignal = [messages map:^id(MessageInfo *message) {
+				NSArray *downloadMessageSignals = [messages map:^id(MessageInfo *message) {
 					NSString *filePath = [message fullFilePath];
 					if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
 					[self createFolder:[message folderPath]];
-					return [[[[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
+
+					RACSignal *downloadMainFileSignal = [[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
 						[fileData writeToFile:filePath atomically:YES];
 						[newlyDownloadedMessages addObject:message];
-					}] doError:^(NSError *error) {
+					}] ignoreValues];
+
+					RACSignal *downloadAttachmentsSignal = [RACSignal concat:[message.attachments map:^id(AttachmentInfo *attachmentInfo) {
+						NSString *attachmentFilePath = [message fullFilePathForAttachment:attachmentInfo];
+						if ([fm fileExistsAtPath:attachmentFilePath]) return [RACSignal empty];
+						return [[[api getFileDataForMessageId:attachmentInfo.attachmentId session:session] doNext:^(NSData *fileData) {
+							[fileData writeToFile:attachmentFilePath atomically:YES];
+						}] ignoreValues];
+					}]];
+
+					return [[[RACSignal concat:@[downloadMainFileSignal, downloadAttachmentsSignal]] doError:^(NSError *error) {
 						[failedToDownloadedMessages addObject:message];
-					}] mapReplace:message] catch:^RACSignal *(NSError *error) {
+					}] catch:^RACSignal *(NSError *error) {
 						return [RACSignal return:message];
 					}];
 				}];
-				return [RACSignal concat:downloadMessageSignal];
+				return [RACSignal concat:downloadMessageSignals];
 			}];
 		}];
 		return [RACSignal concat:getFolderMessagesSignals];
@@ -123,9 +135,13 @@ static const int MaxNotificationPathLength = 90;
 	notification.actionButtonTitle = @"Open";
 	notification.hasActionButton = YES;
 	notification.soundName = NSUserNotificationDefaultSoundName;
-	NSArray *filePaths = [messages map:^id(MessageInfo *message) {
-		return [message filePathRelativeToBasePath];
-	}];
+	NSArray *filePaths = [messages reduce:^id(NSArray *memo, MessageInfo *message) {
+		NSArray *paths = [memo arrayByAddingObject:[message filePathRelativeToBasePath]];
+		NSArray *attachmentPaths = [message.attachments map:^id(AttachmentInfo *attachment) {
+			return [message filePathRelativeToBasePathForAttachment:attachment];
+		}];
+		return [paths arrayByAddingObjectsFromArray:attachmentPaths];
+	} withInitialMemo:@[]];
 
 	NSArray *folderPaths = [filePaths map:^id(NSString *path) {
 		NSArray *pathComponents = [path pathComponents];
@@ -140,6 +156,7 @@ static const int MaxNotificationPathLength = 90;
 			return path.length < MaxNotificationPathLength;
 		}];
 	}
+	
 	if (filePaths.count > MaxNotificationDocuments) {
 		filePaths = [filePaths arrayUntilIndex:MaxNotificationDocuments - 1];
 	}
