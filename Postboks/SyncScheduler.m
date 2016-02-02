@@ -57,21 +57,29 @@
 			SettingsManager *settingsManager = [SettingsManager sharedInstance];
 			if (settingsManager.accounts.count == 0) return NSLocalizedString(@"no-accounts", @"No accounts");
 			NSTimeInterval syncInterval = [settingsManager downloadInterval] + 60.f;
+			BOOL syncing = [tuple.second boolValue];
+			if (syncing) {
+				TTTTimeIntervalFormatter *syncAgaintimeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
+				syncAgaintimeIntervalFormatter.presentDeicticExpression = @"";
+				syncAgaintimeIntervalFormatter.futureDeicticExpression = @"";
+				NSString *intervalString = [syncAgaintimeIntervalFormatter stringForTimeInterval:syncInterval];
+				return [NSString stringWithFormat:NSLocalizedString(@"syncs-every", @"Syncs every %@"), intervalString];
+			}
+
 			NSDate *lastCompletedSyncDate = [settingsManager lastCompletedSyncDate];
 			NSDate *nextSync = [lastCompletedSyncDate dateByAddingTimeInterval:syncInterval];
 			NSTimeInterval interValUntilSync = [nextSync timeIntervalSinceNow];
 
-			TTTTimeIntervalFormatter *timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
-			timeIntervalFormatter.presentDeicticExpression = @"";
-			timeIntervalFormatter.futureDeicticExpression = @"";
-			NSString *intervalString = [timeIntervalFormatter stringForTimeInterval:interValUntilSync];
-			BOOL syncing = [tuple.second boolValue];
-			NSString *intervalFormat = syncing ? NSLocalizedString(@"syncs-every", @"Syncs every %@") : NSLocalizedString(@"next-sync-in", @"Next sync in %@");
-			if (weakSelf.failed && !syncing) {
+			TTTTimeIntervalFormatter *syncAgaintimeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
+			syncAgaintimeIntervalFormatter.presentDeicticExpression = @"";
+			syncAgaintimeIntervalFormatter.futureDeicticExpression = @"";
+			NSString *syncAgainIntervalString = [syncAgaintimeIntervalFormatter stringForTimeInterval:interValUntilSync];
+			NSString *intervalFormat =  NSLocalizedString(@"next-sync-in", @"Next sync in %@");
+			if (weakSelf.failed) {
 				intervalFormat = NSLocalizedString(@"failed-retry-in", @"Failed. Retry in %@");
 			}
 
-			return [NSString stringWithFormat:intervalFormat, intervalString];
+			return [NSString stringWithFormat:intervalFormat, syncAgainIntervalString];
 		}];
 
 		[self rac_liftSelector:@selector(startSync:) withSignalsFromArray:@[shouldSyncTimerSignal]];
