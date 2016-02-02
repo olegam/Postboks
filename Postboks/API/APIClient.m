@@ -145,27 +145,30 @@
 		NSArray *shares = [shareElements map:^id(ONOXMLElement *element) {
 			return [SharedAccount shareFromXMLElement:element];
 		}];
-		return shares;
+		SharedAccount *ownShare = [SharedAccount new];
+		ownShare.userId = @"0";
+		ownShare.name = session.name;
+		return [shares arrayByAddingObject:ownShare];
 	}];
 	return sharesSignal;
 }
 
-- (RACSignal *)getFolderId:(NSString *)folderId shareId:(NSString *)shareId session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take {
-	if (!shareId) shareId = @"0"; // means the logged in user
+- (RACSignal *)getFolderId:(NSString *)folderId share:(SharedAccount *)share session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take {
+	NSParameterAssert(share);
 	NSString *urlFormat = @"%@/%@/%@/mail/folder/%@?skip=%ld&take=%ld&latest=false";
-	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, shareId, folderId, skip, take];
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, share.userId, folderId, skip, take];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *folderSignal = [requestSignal flattenMap:^RACStream *(ONOXMLDocument *responseDocument) {
 		NSArray *messageElements = [responseDocument.rootElement.children.firstObject children];
 		NSMutableArray *mutableMessages = [NSMutableArray array];
 		NSArray *getMessageSignals = [messageElements map:^id(ONOXMLElement *element) {
-			MessageInfo *messageInfo = [MessageInfo messageFromXMLElement:element name:session.name];
+			MessageInfo *messageInfo = [MessageInfo messageFromXMLElement:element name:share.name];
 			// if there are attachments we need to make another request to get their ids
 			if (messageInfo.numAttachments == 0){
 				[mutableMessages addObject:messageInfo];
 				return [[RACSignal return:nil] ignoreValues];
 			}
-			return [[[self getMessageId:messageInfo.messageId folderId:folderId shareId:nil session:session] doNext:^(MessageInfo *fullMessage) {
+			return [[[self getMessageId:messageInfo.messageId folderId:folderId share:share session:session] doNext:^(MessageInfo *fullMessage) {
 				[mutableMessages addObject:fullMessage];
 			}] ignoreValues];
 		}];
@@ -177,14 +180,14 @@
 	return folderSignal;
 }
 
-- (RACSignal *)getMessageId:(NSString *)messageId folderId:(NSString *)folderId shareId:(NSString *)shareId session:(EboksSession *)session {
-	if (!shareId) shareId = @"0"; // means the logged in user
+- (RACSignal *)getMessageId:(NSString *)messageId folderId:(NSString *)folderId share:(SharedAccount *)share session:(EboksSession *)session {
+	NSParameterAssert(share);
 	NSString *urlFormat = @"%@/%@/%@/mail/folder/%@/message/%@";
-	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, shareId, folderId, messageId];
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, share.userId, folderId, messageId];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *messageSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
 		ONOXMLElement *messageElement = responseDocument.rootElement;
-		MessageInfo *message = [MessageInfo messageFromXMLElement:messageElement name:session.name];
+		MessageInfo *message = [MessageInfo messageFromXMLElement:messageElement name:share.name];
 		return message;
 	}];
 	return messageSignal;

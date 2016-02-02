@@ -14,6 +14,7 @@
 #import "SettingsManager.h"
 #import "EboksFolderInfo.h"
 #import "AttachmentInfo.h"
+#import "SharedAccount.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 
@@ -65,46 +66,55 @@ static const int MaxNotificationPathLength = 110;
 	NSMutableArray *newlyDownloadedMessages = [NSMutableArray array];
 	NSMutableArray *failedToDownloadedMessages = [NSMutableArray array];
 
-	RACSignal *getFoldersSignal = [api getFoldersWithSessionId:session shareId:nil];
-	return [[[[getFoldersSignal flattenMap:^RACStream *(NSArray *folders) {
-		NSArray *allFolderIds = [folders reduce:^id(NSArray *memo, EboksFolderInfo *folder) {
-			return [memo arrayByAddingObjectsFromArray:[folder folderIdsIncludingSubfolders]];
-		} withInitialMemo:@[]];
-		NSArray *getFolderMessagesSignals = [allFolderIds map:^id(NSString *folderId) {
-			RACSignal *getFolderContentsSignal = [api getFolderId:folderId shareId:nil session:session skip:0 take:100000];
-			return [getFolderContentsSignal flattenMap:^RACStream *(NSArray *messages) {
-				NSArray *downloadMessageSignals = [messages map:^id(MessageInfo *message) {
-					NSString *filePath = [message fullFilePath];
-					if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
-					[self createFolder:[message folderPath]];
+	RACSignal *getSharesSignal = [api getSharesWithSessionId:session];
 
-					RACSignal *downloadMainFileSignal = [[[api getFileDataForMessageId:message.messageId shareId:nil session:session] doNext:^(NSData *fileData) {
-						[fileData writeToFile:filePath atomically:YES];
-						[newlyDownloadedMessages addObject:message];
-					}] ignoreValues];
+	return [getSharesSignal flattenMap:^RACStream *(NSArray *shares) {
+		NSArray *getFoldersSignals = [shares map:^id(SharedAccount *share) {
+			RACSignal *getFoldersSignal = [api getFoldersWithSessionId:session shareId:share.userId];
+			return [[getFoldersSignal flattenMap:^RACStream *(NSArray *folders) {
+				NSArray *allFolderIds = [folders reduce:^id(NSArray *memo, EboksFolderInfo *folder) {
+					return [memo arrayByAddingObjectsFromArray:[folder folderIdsIncludingSubfolders]];
+				} withInitialMemo:@[]];
+				NSArray *getFolderMessagesSignals = [allFolderIds map:^id(NSString *folderId) {
+					RACSignal *getFolderContentsSignal = [api getFolderId:folderId share:share session:session skip:0 take:100000];
+					return [getFolderContentsSignal flattenMap:^RACStream *(NSArray *messages) {
+						NSArray *downloadMessageSignals = [messages map:^id(MessageInfo *message) {
+							NSString *filePath = [message fullFilePath];
+							if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
+							[self createFolder:[message folderPath]];
 
-					RACSignal *downloadAttachmentsSignal = [RACSignal concat:[message.attachments map:^id(AttachmentInfo *attachmentInfo) {
-						NSString *attachmentFilePath = [message fullFilePathForAttachment:attachmentInfo];
-						if ([fm fileExistsAtPath:attachmentFilePath]) return [RACSignal empty];
-						return [[[api getFileDataForMessageId:attachmentInfo.attachmentId shareId:nil session:session] doNext:^(NSData *fileData) {
-							[fileData writeToFile:attachmentFilePath atomically:YES];
-						}] ignoreValues];
-					}]];
+							RACSignal *downloadMainFileSignal = [[[api getFileDataForMessageId:message.messageId shareId:share.userId session:session] doNext:^(NSData *fileData) {
+								[fileData writeToFile:filePath atomically:YES];
+								[newlyDownloadedMessages addObject:message];
+							}] ignoreValues];
 
-					return [[[RACSignal concat:@[downloadMainFileSignal, downloadAttachmentsSignal]] doError:^(NSError *error) {
-						[failedToDownloadedMessages addObject:message];
-					}] catch:^RACSignal *(NSError *error) {
-						return [RACSignal return:message];
+							RACSignal *downloadAttachmentsSignal = [RACSignal concat:[message.attachments map:^id(AttachmentInfo *attachmentInfo) {
+								NSString *attachmentFilePath = [message fullFilePathForAttachment:attachmentInfo];
+								if ([fm fileExistsAtPath:attachmentFilePath]) return [RACSignal empty];
+								return [[[api getFileDataForMessageId:attachmentInfo.attachmentId shareId:share.userId session:session] doNext:^(NSData *fileData) {
+									[fileData writeToFile:attachmentFilePath atomically:YES];
+								}] ignoreValues];
+							}]];
+
+							return [[[RACSignal concat:@[downloadMainFileSignal, downloadAttachmentsSignal]] doError:^(NSError *error) {
+								[failedToDownloadedMessages addObject:message];
+							}] catch:^RACSignal *(NSError *error) {
+								return [RACSignal return:message];
+							}];
+						}];
+						return [RACSignal concat:downloadMessageSignals];
 					}];
 				}];
-				return [RACSignal concat:downloadMessageSignals];
-			}];
+				return [RACSignal concat:getFolderMessagesSignals];
+			}] ignoreValues];
 		}];
-		return [RACSignal concat:getFolderMessagesSignals];
-	}] ignoreValues] materialize] flattenMap:^RACStream *(RACEvent *event) {
-		if (event.eventType == RACEventTypeError) return [RACSignal error:event.error];
-		return [RACSignal return:RACTuplePack(newlyDownloadedMessages, failedToDownloadedMessages)];
+		return [[[RACSignal concat:getFoldersSignals] materialize] flattenMap:^RACStream *(RACEvent *event) {
+			if (event.eventType == RACEventTypeError) return [RACSignal error:event.error];
+			return [RACSignal return:RACTuplePack(newlyDownloadedMessages, failedToDownloadedMessages)];
+		}];
 	}];
+
+
 }
 
 - (void)createFolder:(NSString *)folderPath {
