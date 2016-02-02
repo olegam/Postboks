@@ -35,6 +35,7 @@
 		85C5AAA7933E191D9C6A5C95 /* add_account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A62B34985B5E34E7C19F /* add_account_icon@2x.png */; };
 		85C5AC0C47CFC976A108CFA6 /* BackgroundColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AD39532803AE05D21DB6 /* BackgroundColorView.m */; };
 		85C5AC53B9E9821674E00676 /* NSButton+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AA40656F83810D33935D /* NSButton+RACAdditions.m */; };
+		85C5AC542D1772DDCDF9CDB7 /* SharedAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AB75C8641176E92EA634 /* SharedAccount.m */; };
 		85C5AC774BEB44B26D8B3574 /* menubar_icon_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A3369B153C94663E2A9C /* menubar_icon_selected@2x.png */; };
 		85C5ACBB5CD30AF0A60A53BB /* selected_tab_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A64093CA6E002F05C9DD /* selected_tab_background.png */; };
 		85C5ACCE152804675674B617 /* EboksAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A9C8BCA6289F51014E42 /* EboksAccount.m */; };
@@ -129,6 +130,7 @@
 		85C5A46C7419AF54165D4E3A /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		85C5A4E6C86617105A8B1D53 /* ModernAddAccountWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModernAddAccountWindowController.m; sourceTree = "<group>"; };
 		85C5A4E7F1B175A32BCCC255 /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
+		85C5A4F97B9E448E49F4D5C5 /* SharedAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedAccount.h; sourceTree = "<group>"; };
 		85C5A51E7D4DB4E0D6F1B120 /* NSString+EboksAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EboksAdditions.m"; sourceTree = "<group>"; };
 		85C5A608692EEF6761792EC7 /* SyncScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncScheduler.m; sourceTree = "<group>"; };
 		85C5A613FBC98170295611FA /* ModernGeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModernGeneralPreferencesViewController.m; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		85C5AAEF206D501ABA87989C /* DocumentDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentDownloader.h; sourceTree = "<group>"; };
 		85C5AB1B6240CEE14EEFAC22 /* Postboks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = file.entitlements; path = Postboks.entitlements; sourceTree = "<group>"; };
 		85C5AB75C61CA0AC2DF640FF /* selected_tab_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_tab_background@2x.png"; sourceTree = "<group>"; };
+		85C5AB75C8641176E92EA634 /* SharedAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedAccount.m; sourceTree = "<group>"; };
 		85C5ABAC969BFECEF11FADA6 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		85C5ABF374CBCFC67EC52599 /* TabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarView.h; sourceTree = "<group>"; };
 		85C5AC4AA569D4B738B22E11 /* SidebarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarView.h; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 				85C5A32761E9BB657CBEF938 /* EboksFolderInfo.h */,
 				85C5A076D89C8E02A48AD026 /* AttachmentInfo.m */,
 				85C5A0BEF95EE5E84D35E649 /* AttachmentInfo.h */,
+				85C5AB75C8641176E92EA634 /* SharedAccount.m */,
+				85C5A4F97B9E448E49F4D5C5 /* SharedAccount.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 				85C5A5AAE84D1BFEB3D788FA /* StyledWindow.m in Sources */,
 				85C5A54691FCD890DA7052EC /* PreferencesWindowController.m in Sources */,
 				85C5A33D0F6976EDB9B13D89 /* AttachmentInfo.m in Sources */,
+				85C5AC542D1772DDCDF9CDB7 /* SharedAccount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,20 +65,20 @@ static const int MaxNotificationPathLength = 110;
 	NSMutableArray *newlyDownloadedMessages = [NSMutableArray array];
 	NSMutableArray *failedToDownloadedMessages = [NSMutableArray array];
 
-	RACSignal *getFoldersSignal = [api getFoldersWithSessionId:session];
+	RACSignal *getFoldersSignal = [api getFoldersWithSessionId:session shareId:nil];
 	return [[[[getFoldersSignal flattenMap:^RACStream *(NSArray *folders) {
 		NSArray *allFolderIds = [folders reduce:^id(NSArray *memo, EboksFolderInfo *folder) {
 			return [memo arrayByAddingObjectsFromArray:[folder folderIdsIncludingSubfolders]];
 		} withInitialMemo:@[]];
 		NSArray *getFolderMessagesSignals = [allFolderIds map:^id(NSString *folderId) {
-			RACSignal *getFolderContentsSignal = [api getFolderId:folderId session:session skip:0 take:100000];
+			RACSignal *getFolderContentsSignal = [api getFolderId:folderId shareId:nil session:session skip:0 take:100000];
 			return [getFolderContentsSignal flattenMap:^RACStream *(NSArray *messages) {
 				NSArray *downloadMessageSignals = [messages map:^id(MessageInfo *message) {
 					NSString *filePath = [message fullFilePath];
 					if ([fm fileExistsAtPath:filePath]) return [RACSignal return:message];
 					[self createFolder:[message folderPath]];
 
-					RACSignal *downloadMainFileSignal = [[[api getFileDataForMessageId:message.messageId session:session] doNext:^(NSData *fileData) {
+					RACSignal *downloadMainFileSignal = [[[api getFileDataForMessageId:message.messageId shareId:nil session:session] doNext:^(NSData *fileData) {
 						[fileData writeToFile:filePath atomically:YES];
 						[newlyDownloadedMessages addObject:message];
 					}] ignoreValues];
@@ -86,7 +86,7 @@ static const int MaxNotificationPathLength = 110;
 					RACSignal *downloadAttachmentsSignal = [RACSignal concat:[message.attachments map:^id(AttachmentInfo *attachmentInfo) {
 						NSString *attachmentFilePath = [message fullFilePathForAttachment:attachmentInfo];
 						if ([fm fileExistsAtPath:attachmentFilePath]) return [RACSignal empty];
-						return [[[api getFileDataForMessageId:attachmentInfo.attachmentId session:session] doNext:^(NSData *fileData) {
+						return [[[api getFileDataForMessageId:attachmentInfo.attachmentId shareId:nil session:session] doNext:^(NSData *fileData) {
 							[fileData writeToFile:attachmentFilePath atomically:YES];
 						}] ignoreValues];
 					}]];

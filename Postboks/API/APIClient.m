@@ -14,6 +14,7 @@
 #import "NSArray+F.h"
 #import "MessageInfo.h"
 #import "EboksFolderInfo.h"
+#import "SharedAccount.h"
 #import <AFNetworking/AFNetworking.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <CocoaSecurity/CocoaSecurity.h>
@@ -121,8 +122,9 @@
 	return sessionSignal;
 }
 
-- (RACSignal *)getFoldersWithSessionId:(EboksSession *)session {
-	NSString *urlString = [NSString stringWithFormat:@"%@/%@/0/mail/folders", self.baseURL.absoluteString, session.internalUserId];
+- (RACSignal *)getFoldersWithSessionId:(EboksSession *)session shareId:(NSString *)shareId {
+	if (!shareId) shareId = @"0"; // means the logged in user
+	NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/mail/folders", self.baseURL.absoluteString, session.internalUserId, shareId];
 
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *foldersSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
@@ -135,9 +137,23 @@
 	return foldersSignal;
 }
 
-- (RACSignal *)getFolderId:(NSString *)folderId session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take {
-	NSString *urlFormat = @"%@/%@/0/mail/folder/%@?skip=%ld&take=%ld&latest=false";
-	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, folderId, skip, take];
+- (RACSignal *)getSharesWithSessionId:(EboksSession *)session {
+	NSString *urlString = [NSString stringWithFormat:@"%@/%@/0/shares?listType=active", self.baseURL.absoluteString, session.internalUserId];
+	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
+	RACSignal *sharesSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
+		NSArray *shareElements = [responseDocument.rootElement children];
+		NSArray *shares = [shareElements map:^id(ONOXMLElement *element) {
+			return [SharedAccount shareFromXMLElement:element];
+		}];
+		return shares;
+	}];
+	return sharesSignal;
+}
+
+- (RACSignal *)getFolderId:(NSString *)folderId shareId:(NSString *)shareId session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take {
+	if (!shareId) shareId = @"0"; // means the logged in user
+	NSString *urlFormat = @"%@/%@/%@/mail/folder/%@?skip=%ld&take=%ld&latest=false";
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, shareId, folderId, skip, take];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *folderSignal = [requestSignal flattenMap:^RACStream *(ONOXMLDocument *responseDocument) {
 		NSArray *messageElements = [responseDocument.rootElement.children.firstObject children];
@@ -149,7 +165,7 @@
 				[mutableMessages addObject:messageInfo];
 				return [[RACSignal return:nil] ignoreValues];
 			}
-			return [[[self getMessageId:messageInfo.messageId folderId:folderId session:session] doNext:^(MessageInfo *fullMessage) {
+			return [[[self getMessageId:messageInfo.messageId folderId:folderId shareId:nil session:session] doNext:^(MessageInfo *fullMessage) {
 				[mutableMessages addObject:fullMessage];
 			}] ignoreValues];
 		}];
@@ -161,9 +177,10 @@
 	return folderSignal;
 }
 
-- (RACSignal *)getMessageId:(NSString *)messageId folderId:(NSString *)folderId session:(EboksSession *)session {
-	NSString *urlFormat = @"%@/%@/0/mail/folder/%@/message/%@";
-	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, folderId, messageId];
+- (RACSignal *)getMessageId:(NSString *)messageId folderId:(NSString *)folderId shareId:(NSString *)shareId session:(EboksSession *)session {
+	if (!shareId) shareId = @"0"; // means the logged in user
+	NSString *urlFormat = @"%@/%@/%@/mail/folder/%@/message/%@";
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, shareId, folderId, messageId];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *messageSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
 		ONOXMLElement *messageElement = responseDocument.rootElement;
@@ -173,9 +190,10 @@
 	return messageSignal;
 }
 
-- (RACSignal *)getFileDataForMessageId:(NSString *)messageId session:(EboksSession *)session {
-	NSString *urlFormat = @"%@/%@/0/mail/folder/0/message/%@/content";
-	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, messageId];
+- (RACSignal *)getFileDataForMessageId:(NSString *)messageId shareId:(NSString *)shareId session:(EboksSession *)session {
+	if (!shareId) shareId = @"0"; // means the logged in user
+	NSString *urlFormat = @"%@/%@/%@/mail/folder/0/message/%@/content";
+	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, shareId, messageId];
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:NO];
 
 	RACSignal *contentSignal = [requestSignal map:^id(id responseData) {
