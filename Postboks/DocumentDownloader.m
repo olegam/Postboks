@@ -45,7 +45,7 @@ static const int MaxNotificationPathLength = 110;
 			RACTupleUnpack(NSArray *newlyDownloadedMessages, NSArray *failedToDownloadedMessages) = tuple;
 			NSLog(@"newlyDownloadedMessages = %@", [newlyDownloadedMessages description]);
 			NSLog(@"failedToDownloadedMessages = %@", [failedToDownloadedMessages description]);
-			[self notifyUserAboutNewMessage:newlyDownloadedMessages userId:account.userId];
+			[self notifyUserAboutNewMessage:newlyDownloadedMessages userName:session.name];
 			[self notifyUserAboutFailedMessage:failedToDownloadedMessages];
 		}] doCompleted:^{
 			NSLog(@"Completed downloading for %@", account.userId);
@@ -53,10 +53,10 @@ static const int MaxNotificationPathLength = 110;
 	}];
 }
 
-+ (NSString *)baseDownloadPathForUserId:(NSString *)userId {
-	return [[[SettingsManager sharedInstance] documentsBasePath] stringByAppendingPathComponent:userId];
++ (NSString *)baseDownloadPathForName:(NSString *)name {
+	NSString *safeName = [MessageInfo sanitizeFileNameString:name];
+	return [[[SettingsManager sharedInstance] documentsBasePath] stringByAppendingPathComponent:safeName];
 }
-
 
 - (RACSignal *)downloadInboxDocumentsWithSession:(EboksSession *)session {
 	APIClient *api = [APIClient sharedInstanceForAccount:self.account];
@@ -118,7 +118,7 @@ static const int MaxNotificationPathLength = 110;
 
 #pragma mark - Notifications
 
-- (void)notifyUserAboutNewMessage:(NSArray *)messages userId:(NSString *)userId {
+- (void)notifyUserAboutNewMessage:(NSArray *)messages userName:(NSString *)userName {
 	if (messages.count == 0) return;
 	NSUserNotification *notification = [NSUserNotification new];
 	NSString *title = [NSString stringWithFormat:@"%ld new eBoks messages", messages.count];
@@ -162,7 +162,7 @@ static const int MaxNotificationPathLength = 110;
 	}
 	notification.userInfo = @{
 			NotificationKeyPdfPaths : filePaths,
-			NotificationKeyUserId : userId,
+		NotificationKeyUserName : userName,
 			NotificationKeyNumFiles : @(messages.count),
 			NotificationKeyNumFolders : @(uniqueuFolders.count),
 	};

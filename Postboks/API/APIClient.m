@@ -143,7 +143,7 @@
 		NSArray *messageElements = [responseDocument.rootElement.children.firstObject children];
 		NSMutableArray *mutableMessages = [NSMutableArray array];
 		NSArray *getMessageSignals = [messageElements map:^id(ONOXMLElement *element) {
-			MessageInfo *messageInfo = [MessageInfo messageFromXMLElement:element userId:session.account.userId];
+			MessageInfo *messageInfo = [MessageInfo messageFromXMLElement:element name:session.name];
 			// if there are attachments we need to make another request to get their ids
 			if (messageInfo.numAttachments == 0){
 				[mutableMessages addObject:messageInfo];
@@ -167,7 +167,7 @@
 	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:YES];
 	RACSignal *messageSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
 		ONOXMLElement *messageElement = responseDocument.rootElement;
-		MessageInfo *message = [MessageInfo messageFromXMLElement:messageElement userId:session.account.userId];
+		MessageInfo *message = [MessageInfo messageFromXMLElement:messageElement name:session.name];
 		return message;
 	}];
 	return messageSignal;

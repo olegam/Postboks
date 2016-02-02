@@ -15,7 +15,7 @@
 
 }
 
-+ (instancetype)messageFromXMLElement:(ONOXMLElement *)element userId:(NSString *)userId {
++ (instancetype)messageFromXMLElement:(ONOXMLElement *)element name:(NSString *)name {
 	MessageInfo *message = [MessageInfo new];
 
 	message.messageId = [element valueForAttribute:@"id"];
@@ -26,7 +26,7 @@
 	message.unread = [[element valueForAttribute:@"unread"] isEqualTo:@"true"];
 	NSString *dateString = [element valueForAttribute:@"receivedDateTime"];
 	message.receivedDate = [[MessageInfo dateParsingFormatter] dateFromString:dateString];
-	message.userId = userId;
+	message.userName = name;
 	message.fileFormat = [[element valueForAttribute:@"format"] lowercaseString];
 
 	NSArray *attachmentElements = [[element firstChildWithTag:@"Attachements"] childrenWithTag:@"AttachmentInfo"];
@@ -55,7 +55,7 @@
 }
 
 - (NSString *)folderPath {
-	NSString *basePath = [DocumentDownloader baseDownloadPathForUserId:self.userId];
+	NSString *basePath = [DocumentDownloader baseDownloadPathForName:self.userName];
 	NSString *fullPath = [basePath  stringByAppendingPathComponent:[self folderPathrelativeToBasePath]];
 	return fullPath;
 }

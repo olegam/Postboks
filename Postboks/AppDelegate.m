@@ -58,12 +58,12 @@ static const int MaxFoldersToOpen = 3;
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
 	[center removeDeliveredNotification:notification];
 	NSDictionary *userInfo = notification.userInfo;
-	NSString *userId = userInfo[NotificationKeyUserId];
+	NSString *userName = userInfo[NotificationKeyUserName];
 	NSInteger numberOfFiles = [userInfo[NotificationKeyNumFiles] integerValue];
 	NSInteger numberOfUniqueFolders = [userInfo[NotificationKeyNumFolders] integerValue];
 
 	NSArray *relativePaths = userInfo[NotificationKeyPdfPaths];
-	NSString *userBaseDownloadPath = [DocumentDownloader baseDownloadPathForUserId:userId];
+	NSString *userBaseDownloadPath = [DocumentDownloader baseDownloadPathForName:userName];
 	NSArray *pdfPaths = [relativePaths map:^id(NSString *relativeFilePath) {
 		return [userBaseDownloadPath stringByAppendingPathComponent:relativeFilePath];
 	}];
