@@ -22,6 +22,8 @@ static NSString *const NotificationKeyNumFolders = @"num_folders";
 
 + (NSString *)baseDownloadPathForName:(NSString *)name;
 
+- (void)trashLegacyFolder;
+
 - (RACSignal *)downloadNewDocumentsAndNotifyUser;
 
 @end

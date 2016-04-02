@@ -33,6 +33,7 @@
 		85C5A8F86F8F5A4C169D54BC /* NSString+EboksAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A51E7D4DB4E0D6F1B120 /* NSString+EboksAdditions.m */; };
 		85C5A913F9A46524E6C6993E /* DocumentDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A800BECFC659216572FE /* DocumentDownloader.m */; };
 		85C5AAA7933E191D9C6A5C95 /* add_account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A62B34985B5E34E7C19F /* add_account_icon@2x.png */; };
+		85C5AB8630703D5F8CA8EA68 /* MigrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A4A327F7BFDCE2541B0F /* MigrationManager.m */; };
 		85C5AC0C47CFC976A108CFA6 /* BackgroundColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AD39532803AE05D21DB6 /* BackgroundColorView.m */; };
 		85C5AC53B9E9821674E00676 /* NSButton+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AA40656F83810D33935D /* NSButton+RACAdditions.m */; };
 		85C5AC542D1772DDCDF9CDB7 /* SharedAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AB75C8641176E92EA634 /* SharedAccount.m */; };
@@ -128,6 +129,7 @@
 		85C5A3369B153C94663E2A9C /* menubar_icon_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar_icon_selected@2x.png"; sourceTree = "<group>"; };
 		85C5A3B3C311D66D3846CB9C /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		85C5A46C7419AF54165D4E3A /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		85C5A4A327F7BFDCE2541B0F /* MigrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationManager.m; sourceTree = "<group>"; };
 		85C5A4E6C86617105A8B1D53 /* ModernAddAccountWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModernAddAccountWindowController.m; sourceTree = "<group>"; };
 		85C5A4E7F1B175A32BCCC255 /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		85C5A4F97B9E448E49F4D5C5 /* SharedAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedAccount.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		85C5A61ABAD82571EA9AF1CA /* CenteredTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextField.h; sourceTree = "<group>"; };
 		85C5A62B34985B5E34E7C19F /* add_account_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_account_icon@2x.png"; sourceTree = "<group>"; };
 		85C5A64093CA6E002F05C9DD /* selected_tab_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected_tab_background.png; sourceTree = "<group>"; };
+		85C5A65B510284AE786DE8BB /* MigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationManager.h; sourceTree = "<group>"; };
 		85C5A6BEFD78BC40680F8421 /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
 		85C5A6CA2ADB1DAB7BC1CAC6 /* BackgroundColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundColorView.h; sourceTree = "<group>"; };
 		85C5A6E238B7C6E0340FE74C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -380,6 +383,8 @@
 				85C5ADAD86FF184B2EE977EF /* User Interface */,
 				85C5AE98BC57C1099197712D /* Images */,
 				85C5A9CFABB66DEF7F0572EE /* Postboks-DeveloperID.entitlements */,
+				85C5A4A327F7BFDCE2541B0F /* MigrationManager.m */,
+				85C5A65B510284AE786DE8BB /* MigrationManager.h */,
 			);
 			path = Postboks;
 			sourceTree = "<group>";
@@ -623,6 +628,7 @@
 				85C5A54691FCD890DA7052EC /* PreferencesWindowController.m in Sources */,
 				85C5A33D0F6976EDB9B13D89 /* AttachmentInfo.m in Sources */,
 				85C5AC542D1772DDCDF9CDB7 /* SharedAccount.m in Sources */,
+				85C5AB8630703D5F8CA8EA68 /* MigrationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +685,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -706,7 +712,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -740,7 +746,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -783,7 +789,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -809,7 +815,7 @@
 				CODE_SIGN_ENTITLEMENTS = Postboks/Postboks.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -833,7 +839,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

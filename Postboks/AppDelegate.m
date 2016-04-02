@@ -18,6 +18,7 @@
 #import "SettingsManager.h"
 #import "SyncScheduler.h"
 #import "StatusBarController.h"
+#import "MigrationManager.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Sparkle/Sparkle.h>
@@ -47,6 +48,8 @@ static const int MaxFoldersToOpen = 3;
 	self.statusBarController = [StatusBarController new];
 
 	[NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
+
+	[[MigrationManager sharedInstance] performMigrations];
 
 	[SyncScheduler sharedInstance]; // starts syncing immediately and every xx interval
 }

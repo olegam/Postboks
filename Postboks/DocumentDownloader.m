@@ -59,6 +59,11 @@ static const int MaxNotificationPathLength = 110;
 	return [[[SettingsManager sharedInstance] documentsBasePath] stringByAppendingPathComponent:safeName];
 }
 
++ (NSString *)legacyBaseDownloadPathForUserId:(NSString *)userId {
+	return [[[SettingsManager sharedInstance] documentsBasePath] stringByAppendingPathComponent:userId];
+}
+
+
 - (RACSignal *)downloadInboxDocumentsWithSession:(EboksSession *)session {
 	APIClient *api = [APIClient sharedInstanceForAccount:self.account];
 
@@ -124,6 +129,15 @@ static const int MaxNotificationPathLength = 110;
 	if (error) {
 		NSLog(@"error creating directory: %@", [error localizedDescription]);
 	}
+}
+
+- (void)trashLegacyFolder {
+	NSString *folderPath = [DocumentDownloader legacyBaseDownloadPathForUserId:self.account.userId];
+	NSURL *folderURL = [NSURL fileURLWithPath:folderPath];
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSError *error = nil;
+	NSURL *trashURL = nil;
+	[fm trashItemAtURL:folderURL resultingItemURL:&trashURL error:&error];
 }
 
 #pragma mark - Notifications
