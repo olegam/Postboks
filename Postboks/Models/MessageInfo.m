@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "DocumentDownloader.h"
 #import "AttachmentInfo.h"
+#import "CocoaSecurity.h"
 #import <ISO8601DateFormatter/ISO8601DateFormatter.h>
 #import <Functional.m/NSArray+F.h>
 
@@ -44,24 +45,25 @@
 }
 
 - (NSString *)fileName {
-	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@).%@", self.name, self.senderName, self.fileFormat];
+	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@) %@.%@",
+										self.name, self.senderName, self.shortUserFacingHash, self.fileFormat];
 	NSString *safeName = [MessageInfo sanitizeFileNameString:unEscapedName];
 	return safeName;
 }
 
-- (NSString *)folderPathrelativeToBasePath {
+- (NSString *)folderPathRelativeToBasePath {
 	NSString *dateString = [[MessageInfo simpleDateFormatter] stringFromDate:self.receivedDate];
 	return dateString;
 }
 
 - (NSString *)folderPath {
 	NSString *basePath = [DocumentDownloader baseDownloadPathForName:self.userName];
-	NSString *fullPath = [basePath  stringByAppendingPathComponent:[self folderPathrelativeToBasePath]];
+	NSString *fullPath = [basePath  stringByAppendingPathComponent:[self folderPathRelativeToBasePath]];
 	return fullPath;
 }
 
 - (NSString *)filePathRelativeToBasePath {
-	return [[self folderPathrelativeToBasePath] stringByAppendingPathComponent:[self fileName]];
+	return [[self folderPathRelativeToBasePath] stringByAppendingPathComponent:[self fileName]];
 }
 
 - (NSString *)fullFilePath {
@@ -74,13 +76,20 @@
 }
 
 - (NSString *)filePathRelativeToBasePathForAttachment:(AttachmentInfo *)attachment {
-	return [[self folderPathrelativeToBasePath] stringByAppendingPathComponent:[self fileNameForAttachment:attachment]];
+	return [[self folderPathRelativeToBasePath] stringByAppendingPathComponent:[self fileNameForAttachment:attachment]];
 }
 
 - (NSString *)fileNameForAttachment:(AttachmentInfo *)attachment {
-	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@) - %@.%@", self.name, self.senderName, attachment.name, attachment.fileFormat];
+	NSString *unEscapedName = [NSString stringWithFormat:@"%@ (%@) %@ - %@.%@",
+										self.name, self.senderName, self.shortUserFacingHash, attachment.name, attachment.fileFormat];
 	NSString *safeName = [MessageInfo sanitizeFileNameString:unEscapedName];
 	return safeName;
+}
+
+- (NSString *)shortUserFacingHash {
+	NSString *hash = [CocoaSecurity sha1:self.messageId].hex;
+	NSUInteger shortHashLength = 5;
+	return [[hash substringFromIndex:hash.length - shortHashLength] lowercaseString];
 }
 
 #pragma mark - Helpers
