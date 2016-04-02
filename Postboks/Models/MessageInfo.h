@@ -18,14 +18,16 @@
 @property(nonatomic, strong) NSString *folderId;
 @property(nonatomic, assign) BOOL unread;
 @property(nonatomic, copy) NSString *lastAction;
-@property(nonatomic, strong) NSString *userId;
+@property(nonatomic, strong) NSString *userName;
 @property(nonatomic, strong) NSString *fileFormat;
 
 @property(nonatomic, assign) NSUInteger numAttachments;
 
 @property(nonatomic, strong) NSArray *attachments;
 
-+ (instancetype)messageFromXMLElement:(ONOXMLElement *)element userId:(NSString *)userId;
++ (instancetype)messageFromXMLElement:(ONOXMLElement *)element name:(NSString *)name;
+
++ (NSString *)sanitizeFileNameString:(NSString *)fileName;
 
 - (NSString *)fileName;
 

@@ -10,7 +10,7 @@
 @class RACSignal;
 
 static NSString *const NotificationKeyPdfPaths = @"pdf_paths";
-static NSString *const NotificationKeyUserId = @"user_id";
+static NSString *const NotificationKeyUserName = @"user_id";
 static NSString *const NotificationKeyNumFiles = @"num_files";
 static NSString *const NotificationKeyNumFolders = @"num_folders";
 
@@ -20,7 +20,9 @@ static NSString *const NotificationKeyNumFolders = @"num_folders";
 
 - (instancetype)initWithAccount:(EboksAccount *)account;
 
-+ (NSString *)baseDownloadPathForUserId:(NSString *)userId;
++ (NSString *)baseDownloadPathForName:(NSString *)name;
+
+- (void)trashLegacyFolder;
 
 - (RACSignal *)downloadNewDocumentsAndNotifyUser;
 

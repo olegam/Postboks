@@ -8,6 +8,7 @@
 @class RACSignal;
 @class EboksAccount;
 @class EboksSession;
+@class SharedAccount;
 
 
 @interface APIClient : NSObject
@@ -17,11 +18,13 @@
 
 - (RACSignal *)getSessionForAccount:(EboksAccount *)account;
 
-- (RACSignal *)getFoldersWithSessionId:(EboksSession *)session;
+- (RACSignal *)getFoldersWithSessionId:(EboksSession *)session shareId:(NSString *)shareId;
 
-- (RACSignal *)getFolderId:(NSString *)folderId session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take;
+- (RACSignal *)getSharesWithSessionId:(EboksSession *)session;
 
-- (RACSignal *)getMessageId:(NSString *)messageId folderId:(NSString *)folderId session:(EboksSession *)session;
+- (RACSignal *)getFolderId:(NSString *)folderId share:(SharedAccount *)share session:(EboksSession *)session skip:(NSInteger)skip take:(NSInteger)take;
 
-- (RACSignal *)getFileDataForMessageId:(NSString *)messageId session:(EboksSession *)session;
+- (RACSignal *)getMessageId:(NSString *)messageId folderId:(NSString *)folderId share:(SharedAccount *)share session:(EboksSession *)session;
+
+- (RACSignal *)getFileDataForMessageId:(NSString *)messageId shareId:(NSString *)shareId session:(EboksSession *)session;
 @end

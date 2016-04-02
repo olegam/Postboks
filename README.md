@@ -31,12 +31,25 @@ Click the "Open documents folder" to see how all your documents are nicely organ
 You should note that your credentials are securely stored in the OS X keychain, but all your documents are stored as files on the disk. So you may want to enable disk encryption on your mac to make sure sensitive documents are encrypted.
 
 
+## How to use with business accounts
+
+e-Boks does not directly support using their API with a business/company account, but you can easily configure your personal account to get access to your business' e-Boks. This feature is supported in Postboks version 0.6 and later.
+
+1. First you need to make sure you have an "e-Boks for business" account and it is subscribing to mail from all public senders.
+1. You need to add delegate access to your business' e-Boks account. They call this "Shared folders" (or "adgange" in Danish).
+1. Click on the Settings button ("Indstillinger" in Danish) and then click the "Shared folders" ("Adgange") menu item.
+1. Select the "person" type and enter your CPR number.
+1. Chose a random password and select an expiry date (way out in the future).
+1. Log in with your personal e-Boks account on the website and validate the access using the same password that you chose.
+1. Now you are ready to receive digital mail from your company using the Postboks app!
+
 ## Features
 
 - Syncs all e-Boks documents to a folder of your choice. E.g. your Dropbox folder.
 - Support for multiple accounts.
+- Supports delegated accounts (Shared folders) including e-Boks for Business accounts.
 - Secure storage of credentials using the OS X keychain.
-- Automatic start.
+- Automatic start when OS X starts.
 - Sign in using the e-Boks mobile app credentials.
 - Danish and Swedish e-Boks accounts are supported.
 - Danish, Swedish and English localization.

@@ -18,6 +18,7 @@
 #import "SettingsManager.h"
 #import "SyncScheduler.h"
 #import "StatusBarController.h"
+#import "MigrationManager.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Sparkle/Sparkle.h>
@@ -48,6 +49,8 @@ static const int MaxFoldersToOpen = 3;
 
 	[NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
 
+	[[MigrationManager sharedInstance] performMigrations];
+
 	[SyncScheduler sharedInstance]; // starts syncing immediately and every xx interval
 }
 
@@ -58,12 +61,12 @@ static const int MaxFoldersToOpen = 3;
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
 	[center removeDeliveredNotification:notification];
 	NSDictionary *userInfo = notification.userInfo;
-	NSString *userId = userInfo[NotificationKeyUserId];
+	NSString *userName = userInfo[NotificationKeyUserName];
 	NSInteger numberOfFiles = [userInfo[NotificationKeyNumFiles] integerValue];
 	NSInteger numberOfUniqueFolders = [userInfo[NotificationKeyNumFolders] integerValue];
 
 	NSArray *relativePaths = userInfo[NotificationKeyPdfPaths];
-	NSString *userBaseDownloadPath = [DocumentDownloader baseDownloadPathForUserId:userId];
+	NSString *userBaseDownloadPath = [DocumentDownloader baseDownloadPathForName:userName];
 	NSArray *pdfPaths = [relativePaths map:^id(NSString *relativeFilePath) {
 		return [userBaseDownloadPath stringByAppendingPathComponent:relativeFilePath];
 	}];
