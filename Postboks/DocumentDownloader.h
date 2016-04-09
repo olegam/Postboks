@@ -13,6 +13,7 @@ static NSString *const NotificationKeyPdfPaths = @"pdf_paths";
 static NSString *const NotificationKeyUserName = @"user_id";
 static NSString *const NotificationKeyNumFiles = @"num_files";
 static NSString *const NotificationKeyNumFolders = @"num_folders";
+static NSString *const NotificationKeyIdentifier = @"identifier";
 
 @interface DocumentDownloader : NSObject
 

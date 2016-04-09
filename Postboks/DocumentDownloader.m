@@ -15,6 +15,7 @@
 #import "EboksFolderInfo.h"
 #import "AttachmentInfo.h"
 #import "SharedAccount.h"
+#import "NotificationController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 
@@ -174,22 +175,17 @@ static const int MaxNotificationPathLength = 110;
 	}];
 	NSArray *uniqueuFolders = [[NSSet setWithArray:folderPaths] allObjects];
 
-	// filter out long paths to avoid 1k limit
-	if (filePaths.count > 1) {
-		filePaths = [filePaths filter:^BOOL(NSString *path) {
-			return path.length < MaxNotificationPathLength;
-		}];
-	}
-	
-	if (filePaths.count > MaxNotificationDocuments) {
-		filePaths = [filePaths arrayUntilIndex:MaxNotificationDocuments - 1];
-	}
-	notification.userInfo = @{
+
+	NSDictionary *fullNotificationPayload = @{
 			NotificationKeyPdfPaths : filePaths,
-		NotificationKeyUserName : userName,
+			NotificationKeyUserName : userName,
 			NotificationKeyNumFiles : @(messages.count),
 			NotificationKeyNumFolders : @(uniqueuFolders.count),
 	};
+	NotificationController *notificationController = [NotificationController new];
+	NSString *identifier = [notificationController saveNotificationUserInfo:fullNotificationPayload];
+
+	notification.userInfo = @{NotificationKeyIdentifier : identifier};
 
 	[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
@@ -199,7 +195,7 @@ static const int MaxNotificationPathLength = 110;
 	NSUserNotification *notification = [NSUserNotification new];
 	if (messages.count == 1) {
 		MessageInfo *message = messages.firstObject;
-		notification.title = [NSString stringWithFormat:@"Failed to donload message '%@'", message.name];
+		notification.title = [NSString stringWithFormat:@"Failed to download message '%@'", message.name];
 	} else {
 		notification.title = [NSString stringWithFormat:@"Failed to download %ld messages", messages.count];
 	}

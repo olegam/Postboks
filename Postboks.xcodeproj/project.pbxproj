@@ -33,6 +33,7 @@
 		85C5A8F86F8F5A4C169D54BC /* NSString+EboksAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A51E7D4DB4E0D6F1B120 /* NSString+EboksAdditions.m */; };
 		85C5A913F9A46524E6C6993E /* DocumentDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A800BECFC659216572FE /* DocumentDownloader.m */; };
 		85C5AAA7933E191D9C6A5C95 /* add_account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C5A62B34985B5E34E7C19F /* add_account_icon@2x.png */; };
+		85C5AB4B9E376A0C532ADFDC /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A1E333062DEDF5A4F9CF /* NotificationController.m */; };
 		85C5AB8630703D5F8CA8EA68 /* MigrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5A4A327F7BFDCE2541B0F /* MigrationManager.m */; };
 		85C5AC0C47CFC976A108CFA6 /* BackgroundColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AD39532803AE05D21DB6 /* BackgroundColorView.m */; };
 		85C5AC53B9E9821674E00676 /* NSButton+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C5AA40656F83810D33935D /* NSButton+RACAdditions.m */; };
@@ -120,6 +121,7 @@
 		85C5A1180FBC36C3DC0B31B2 /* StyledWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledWindow.m; sourceTree = "<group>"; };
 		85C5A175F206F0E9A6B953B6 /* EboksSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EboksSession.h; sourceTree = "<group>"; };
 		85C5A18B76F39C2477B3FB09 /* SidebarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarView.m; sourceTree = "<group>"; };
+		85C5A1E333062DEDF5A4F9CF /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		85C5A1FC0A0F28F01BF4D9FD /* MessageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInfo.m; sourceTree = "<group>"; };
 		85C5A233B6A2C34ECD717C75 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		85C5A268B2D563A8E22F58EB /* FlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatButton.h; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		85C5AD584B29E3833502794F /* NSComboBox+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSComboBox+RACAdditions.m"; sourceTree = "<group>"; };
 		85C5ADFDAB58E98F6BA9F1BE /* menubar_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_icon.png; sourceTree = "<group>"; };
 		85C5AE56A55AF1E51753253A /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
+		85C5AE577E52123E153C60E0 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		85C5AEFFB7D0576F7A6D458E /* BasePreferencesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePreferencesView.h; sourceTree = "<group>"; };
 		85C5AF099EEC058972882B76 /* NSTableView+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTableView+RACAdditions.m"; sourceTree = "<group>"; };
 		85C5AF8EE5E5A77B3639B0F4 /* SyncScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncScheduler.h; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				85C5A9CFABB66DEF7F0572EE /* Postboks-DeveloperID.entitlements */,
 				85C5A4A327F7BFDCE2541B0F /* MigrationManager.m */,
 				85C5A65B510284AE786DE8BB /* MigrationManager.h */,
+				85C5A1E333062DEDF5A4F9CF /* NotificationController.m */,
+				85C5AE577E52123E153C60E0 /* NotificationController.h */,
 			);
 			path = Postboks;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				85C5A33D0F6976EDB9B13D89 /* AttachmentInfo.m in Sources */,
 				85C5AC542D1772DDCDF9CDB7 /* SharedAccount.m in Sources */,
 				85C5AB8630703D5F8CA8EA68 /* MigrationManager.m in Sources */,
+				85C5AB4B9E376A0C532ADFDC /* NotificationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

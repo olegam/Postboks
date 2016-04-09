@@ -19,13 +19,11 @@
 #import "SyncScheduler.h"
 #import "StatusBarController.h"
 #import "MigrationManager.h"
+#import "NotificationController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Sparkle/Sparkle.h>
 
-
-static const int MaxFilesToOpenInPreview = 4;
-static const int MaxFoldersToOpen = 3;
 
 @interface AppDelegate () <NSUserNotificationCenterDelegate, SUUpdaterDelegate>
 
@@ -60,28 +58,8 @@ static const int MaxFoldersToOpen = 3;
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
 	[center removeDeliveredNotification:notification];
-	NSDictionary *userInfo = notification.userInfo;
-	NSString *userName = userInfo[NotificationKeyUserName];
-	NSInteger numberOfFiles = [userInfo[NotificationKeyNumFiles] integerValue];
-	NSInteger numberOfUniqueFolders = [userInfo[NotificationKeyNumFolders] integerValue];
-
-	NSArray *relativePaths = userInfo[NotificationKeyPdfPaths];
-	NSString *userBaseDownloadPath = [DocumentDownloader baseDownloadPathForName:userName];
-	NSArray *pdfPaths = [relativePaths map:^id(NSString *relativeFilePath) {
-		return [userBaseDownloadPath stringByAppendingPathComponent:relativeFilePath];
-	}];
-	if (numberOfFiles <= MaxFilesToOpenInPreview) {
-		[pdfPaths each:^(NSString *path) {
-			[[NSWorkspace sharedWorkspace] openFile:path];
-		}];
-	} else if (numberOfUniqueFolders <= MaxFoldersToOpen) {
-		NSArray *urls = [pdfPaths map:^id(NSString *path) {
-			return [[NSURL alloc] initFileURLWithPath:path];
-		}];
-		[[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
-	} else {
-		[[NSWorkspace sharedWorkspace] openFile:userBaseDownloadPath];
-	}
+	NotificationController *notificationController = [NotificationController new];
+	[notificationController handleUserClickedOnNotification:notification];
 }
 
 @end
