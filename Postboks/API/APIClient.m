@@ -197,7 +197,15 @@
 	if (!shareId) shareId = @"0"; // means the logged in user
 	NSString *urlFormat = @"%@/%@/%@/mail/folder/0/message/%@/content";
 	NSString *urlString = [NSString stringWithFormat:urlFormat, self.baseURL.absoluteString, session.internalUserId, shareId, messageId];
-	RACSignal *requestSignal = [self requestSignalForSession:session urlString:urlString xmlResponse:NO];
+	RACSignal *requestSignal = [[self requestSignalForSession:session urlString:urlString xmlResponse:NO] catch:^RACSignal *(NSError *error) {
+		NSHTTPURLResponse *response = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+		RACSignal *returnSignal = [RACSignal error:error];
+		if (response.statusCode == 500) {
+			NSLog(@"Document failed to download. This sometimes happens. Recover by writing empty file. %@, %@", urlString, error);
+			returnSignal = [RACSignal return:[NSData data]];
+		}
+		return returnSignal;
+	}];
 
 	RACSignal *contentSignal = [requestSignal map:^id(id responseData) {
 		return responseData;
