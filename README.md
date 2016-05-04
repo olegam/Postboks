@@ -55,7 +55,7 @@ e-Boks does not directly support using their API with a business/company account
 - Danish, Swedish and English localization.
 
 ## Roadmap
-- Support for authorization to multiple inboxes including company inboxes.
+- ~~Support for authorization to multiple inboxes including company inboxes.~~
 - Improve icon and graphical appearance.
 - Add support for Norwegian accounts. Anyone up for it?
 - Make a nice looking marketing site.
