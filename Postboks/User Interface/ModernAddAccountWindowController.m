@@ -146,10 +146,6 @@
 		[self.dismissSignal sendNext:nil];
 	} error:^(NSError *error) {
 		NSString *errorMessage = [error localizedDescription];
-		if (error.code == -1011) {
-			errorMessage = NSLocalizedString(@"invalid-login-credentials", @"The credentials you entered could not be verified.");
-		}
-
 		NSAlert *alert = [[NSAlert alloc] init];
 		[alert setMessageText:errorMessage];
 		[alert runModal];
@@ -202,7 +198,6 @@
 		_activationCodeTextField = [CenteredTextField new];
 		_activationCodeTextField.drawsBorder = NO;
 		_activationCodeTextField.placeholderString = @"";
-		_activationCodeTextField.secure = YES;
 		_activationCodeTextField.continuous = YES;
 	}
 	return _activationCodeTextField;

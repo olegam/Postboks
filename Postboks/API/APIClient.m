@@ -107,7 +107,7 @@
 	requestOperation.responseSerializer = [AFOnoResponseSerializer XMLResponseSerializer];
 	RACSignal *requestSignal = [self signalForRequestOperation:requestOperation];
 
-	RACSignal *sessionSignal = [requestSignal map:^id(ONOXMLDocument *responseDocument) {
+	RACSignal *sessionSignal = [[requestSignal map:^id(ONOXMLDocument *responseDocument) {
 		ONOXMLElement *userElement = responseDocument.rootElement.children.firstObject;
 		session.name = [userElement valueForAttribute:@"name" inNamespace:nil];
 		account.ownerName = session.name; // a little dirty
@@ -117,6 +117,23 @@
 		session.sessionId = [[authenticateResponse firstMatchWithDetails:RX(@"sessionid=\\\"(([a-f0-9]|-)+)\\\"")].groups[1] value];
 		session.nonce = [[authenticateResponse firstMatchWithDetails:RX(@"nonce=\\\"(([a-f0-9])+)\\\"")].groups[1] value];
 		return session;
+	}] catch:^RACSignal *(NSError *error) {
+		NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+		ONOXMLDocument *xmlError = [ONOXMLDocument XMLDocumentWithData:errorData error:nil];
+		if (xmlError) {
+			NSMutableDictionary *mutableUserInfo = [error.userInfo mutableCopy];
+			mutableUserInfo[@"xml"] = xmlError;
+			ONOXMLElement *errorElement = xmlError.rootElement;
+			NSUInteger errorCode = [[errorElement firstChildWithTag:@"ErrorCode"].stringValue integerValue];
+			if (errorCode == 10130) {
+				mutableUserInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"invalid-login-credentials", @"The credentials you entered could not be verified.");
+			} else {
+				mutableUserInfo[NSLocalizedDescriptionKey] = [errorElement firstChildWithTag:@"ErrorText"].stringValue;
+			}
+			
+			error = [NSError errorWithDomain:error.domain code:errorCode ?: error.code userInfo:[mutableUserInfo copy]];
+		}
+		return [RACSignal error:error];
 	}];
 
 	return sessionSignal;
