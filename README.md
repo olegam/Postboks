@@ -51,13 +51,11 @@ e-Boks does not directly support using their API with a business/company account
 - Secure storage of credentials using the OS X keychain.
 - Automatic start when OS X starts.
 - Sign in using the e-Boks mobile app credentials.
-- Danish and Swedish e-Boks accounts are supported.
+- Danish, Swedish nd Norwegian e-Boks accounts are supported.
 - Danish, Swedish and English localization.
 
 ## Roadmap
-- ~~Support for authorization to multiple inboxes including company inboxes.~~
 - Improve icon and graphical appearance.
-- Add support for Norwegian accounts. Anyone up for it?
 - Make a nice looking marketing site.
 
 ## Contributing
