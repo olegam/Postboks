@@ -7,6 +7,9 @@ Whenever you receive a new document you will get a notification and clicking it 
 
 Use at your own risk. ([e-Boks Terms of use](http://www.e-boks.dk/signup_terms.aspx?type=enduser)))
 
+## UPDATE June 2019:
+The app is currently a little broken and many documents are downloaded with a 0 byte size. This is because eBoks have changed how authentication works and Postboks does not yet support the new method. We need to figure out how the new authentication method works and add support for it. This is being discussed in this issue: https://github.com/olegam/Postboks/issues/36
+
 ## Gettings started
 
 ### 1. Download the latest version of Postboks
